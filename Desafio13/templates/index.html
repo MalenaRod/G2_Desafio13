@@ -1,11 +1,92 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
 {% block contenido %}
+<head>
+  <style>
+    body {
+      background-image: url(https://edwardrodriguez.com/wp-content/uploads/2017/03/background-minimalist-gris.jpg);
+      color: #333;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
 
-<div class="title-container">
-  <h1>TITULO DEL BLOG</h1>
-</div>
+    header {
+      text-align: center;
+      padding: 50px 0;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    section {
+      background-color: #fff;
+      padding: 50px;
+      margin-bottom: 30px;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style-type: disc;
+      margin-left: 20px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #555;
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 4px;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>EXPLORA</h1>
+    <p>Las maravilla del chaco</p>
+  </header>
+
+  <section>
+    <h2>Inovador</h2>
+    <p>Pagina para nada generica y muy original</p>
+  </section>
+
+  <section>
+    <h2>Fachera</h2>
+    <p>Ponele que si</p>
+  </section>
+
+  <section id="cta">
+    <h2>Ayudanos a mejorar</h2>
+    <p>Suscribete ahora!</p>
+    <a href="#" class="cta-button">¡Inscríbete Ahora!</a>
+  </section>
+
+</body>
+
 {% endblock contenido %}
   
