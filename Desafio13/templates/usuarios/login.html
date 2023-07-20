@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
-{% block blockname %}
+
+{% block contenido %}
   <h1>Inicio Sesion</h1>
-  <form method="post">
-    {% csrf_token %}
+  <form method="post">{% csrf_token %}
+
     {{form.as_p}}
+    
     <button type ='submit'>Iniciar</button>
+
   </form>
-{% endblock blockname %}
+  
+{% endblock contenido %}
     
