@@ -17,8 +17,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # VARIABLES DEL LOGIN
-#LOGIN_URL = 'login/'
-#LOGIN_REDIRECT_URL = '' 
+LOGIN_URL = 'login/'
+LOGIN_REDIRECT_URL = '../../' 
 
 
 # DJANGO DEBERIA USA MODELO PROPIO PARA USUARIOS
