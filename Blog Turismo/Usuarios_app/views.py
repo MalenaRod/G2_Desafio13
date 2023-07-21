@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
 from .models import Usuario
-from django.forms import RegistrarseForm
+from .forms import RegistrarseForm
 from django.urls import reverse
 
 # Create your views here.

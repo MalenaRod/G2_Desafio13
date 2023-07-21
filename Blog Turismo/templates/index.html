@@ -3,22 +3,31 @@
 
 {% block contenido %}
 <head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=NOMBRE_DE_LA_FUENTE&display=swap">
   <style>
-    body {
-      background-image: url(https://edwardrodriguez.com/wp-content/uploads/2017/03/background-minimalist-gris.jpg);
-      color: #333;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
+    body{
+      background-color: #555;
+      font-family: 'Signika', sans-serif;
     }
+
 
     header {
-      text-align: center;
-      padding: 50px 0;
+      width: 120%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    video{
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
+
     h1 {
-      font-size: 36px;
+      font-size: 56px;
       margin-bottom: 20px;
     }
 
@@ -62,9 +71,64 @@
       text-align: center;
       padding: 20px;
     }
+    .text-overlay {
+      position: absolute;
+      top: 40%;
+      left: 20px; /* Ajusta el valor para controlar la posición horizontal del texto */
+      transform: translateY(-50%);
+      color: #fff;
+      font-size: 36px; /* Ajusta el tamaño del texto según tus preferencias */
+
+    }
+    .video-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .-overlay {
+      position: absolute;
+      top: 40%;
+      left: 20px; /* Ajusta el valor para controlar la posición horizontal del texto */
+      transform: translateY(-50%);
+      color: #fff;
+      font-size: 36px; /* Ajusta el tamaño del texto según tus preferencias */
+
+    }
+    .img-overlay {
+      position: absolute;
+      top: 40%;
+      left: 180%; /* Ajusta el valor para controlar la posición horizontal del texto */
+      transform: translateY(-50%);
+      color: #fff;
+      font-size: 56px; /* Ajusta el tamaño del texto según tus preferencias */
+    }
   </style>
+  
 </head>
 <body>
+  <header>
+    <div class="video-container">
+      <video onloadedmetadata="this.muted=true" autoplay loop>
+        <source src="static/video/fondo.mp4">
+      </video>
+      <div class="text-overlay">
+        <h1>DESCUBRE CHACO</h1>
+        <h2>-Descubre la cultura</h2>
+        <h2>-Explora las tierras</h2>
+        <h2>-Disfruta la diversidad</h2>
+    <div class="img-overlay">
+      <img src="static/imagen/imgc.png" alt="">
+    </div>
+
+
+    </div>
+  </header>
+  <section>
+    <h1>Inovador</h1>
+    <p>Pagina para nada generica y muy original</p>
+    <h1>a</h1>
+  </section>
   <header>
     <h1>EXPLORA</h1>
     <p>Las maravilla del chaco</p>

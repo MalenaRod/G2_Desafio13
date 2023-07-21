@@ -22,7 +22,7 @@ LOGIN_REDIRECT_URL = '../../'
 
 
 # DJANGO DEBERIA USA MODELO PROPIO PARA USUARIOS
-#AUTH_USER_MODEL = usuarios_app.Usuario
+AUTH_USER_MODEL = 'Usuarios_app.Usuario'
 
 
 # Quick-start development settings - unsuitable for production
@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
-    #'usuarios_app',
+    'Usuarios_app',
     'Articulos_app'
 ]
 
