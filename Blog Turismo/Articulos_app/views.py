@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse
 
 # Create your views here.
 
@@ -20,7 +21,11 @@ def nueva_publicacion(request):
         if formulario.is_valid():
             publicacion = formulario.save(commit=False)
             publicacion.save()
-            return redirect('articulos/detalle_publicacion', pk=publicacion.pk)
+            return redirect('articulos/../../../articulos', pk=publicacion.pk)
+
+     #return redirect('articulos/detalle_publicacion', pk=publicacion.pk)
+     #return reverse('articulos:lista_publicaciones')
+    
     else:
         formulario = PublicacionForm()
     return render(request, 'articulos/nueva_publicacion.html', {'formulario': formulario})
