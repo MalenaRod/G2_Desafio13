@@ -2,9 +2,10 @@
 
 {% block contenido %}
   <h1>Nueva publicación</h1>
-  <form method="post">
+  <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ formulario.as_p }}
     <button type="submit">Guardar</button>
   </form>
 {% endblock contenido %}
+

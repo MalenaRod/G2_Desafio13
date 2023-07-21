@@ -2,7 +2,7 @@
 
 {% block contenido %}
   <h1>Editar "{{ publicacion.titulo }}"</h1>
-  <form method="post">
+  <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ formulario.as_p }}
     <button type="submit">Guardar</button>
