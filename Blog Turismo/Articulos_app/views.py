@@ -17,7 +17,7 @@ def detalle_publicacion(request, pk):
 
 def nueva_publicacion(request):
     if request.method == "POST":
-        formulario = PublicacionForm(request.POST)
+        formulario = PublicacionForm(request.POST, request.FILES)
         if formulario.is_valid():
             publicacion = formulario.save(commit=False)
             publicacion.save()
@@ -33,7 +33,7 @@ def nueva_publicacion(request):
 def editar_publicacion(request, pk):
     publicacion = get_object_or_404(Publicacion, pk=pk)
     if request.method == "POST":
-        formulario = PublicacionForm(request.POST, instance=publicacion)
+        formulario = PublicacionForm(request.POST, request.FILES, instance=publicacion)
         if formulario.is_valid():
             publicacion = formulario.save(commit=False)
             publicacion.save()
