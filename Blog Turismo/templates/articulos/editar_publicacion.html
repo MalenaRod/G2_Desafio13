@@ -1,10 +1,20 @@
 {% extends 'base.html' %}
 
 {% block contenido %}
-  <h1>Editar "{{ publicacion.titulo }}"</h1>
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ formulario.as_p }}
-    <button type="submit">Guardar</button>
-  </form>
+<head>
+  <link rel="stylesheet" type="text/css" href="/static/css/articulos_css/style_nueva_p.css">
+</head> 
+
+<body style="background-image: url('/static/imagen/bg_new_p.jpg'); background-size: cover; background-position: center;">
+  <div class="container">
+    <div class="contenido">
+        <h1>Editar "{{ publicacion.titulo }}"</h1>
+        <form method="post" enctype="multipart/form-data" style="width:1300px;">
+          {% csrf_token %}
+          {{ formulario.as_p }}
+          <button type="submit">Guardar</button>
+        </form>
+      </div>
+    </div>
+</body>
 {% endblock contenido %}
