@@ -1,37 +1,36 @@
 {% extends 'base.html' %}
 {% block contenido %}
 <head>
-  <link rel="stylesheet" type="text/css" href="/static/css/articulos_css/stylle_list.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/articulos_css/style_list.css"> 
 </head>
 <body>
 
   <h1 class="center-botton">Articulos</h1>
-  
 
-    <div class="row">
-      {% for publicacion in publicaciones %}
-        <div class="col-4">
-          <div class="card m-3">
-            <div class="card-header">
-              {{ publicacion.fecha_publicacion }}
-            </div>    
-            <div class="card-body">
-              <h5 class="card-title">{{ publicacion.titulo }}</h5>
-              <p class="card-text">{{ publicacion.contenido|truncatewords_html:50 }}</p>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for publicacion in publicaciones %}
+      <div class="col-4"> 
+        <div class="card h-100">
+          <img src="{{ publicacion.imagen.url }}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ publicacion.titulo }}</h5>
+            <p class="card-text">{{ publicacion.contenido|truncatewords_html:50 }}</p>
+
+          </div>
+          <div class="card-footer">
+            <small class="text-body-secondary d-flex justify-content-between align-items-center">
+              <span>{{ publicacion.fecha_publicacion }}</span>
               <a href="{% url 'detalle_publicacion' pk=publicacion.pk %}" class="btn "><i class="fab fa-github"></i> Leer mas...</a>
-
-            </div>
+            </small>
           </div>
         </div>
-        {% if forloop.counter|divisibleby:3 and not forloop.last %}
-          </div><div class="row">
-        {% endif %}
-      {% endfor %}
-    </div>
+      </div>
+    {% endfor %}
+  </div>
     <div class="center-botton">
       <a href="{% url 'nueva_publicacion' %}" class="btn-nueva-publicacion">Nueva publicación</a>
     </div>
   </div>
-  
-  </body>
+</body>
 {% endblock contenido %}

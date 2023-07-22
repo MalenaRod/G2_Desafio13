@@ -1,5 +1,8 @@
 .body{
   background-color: #f2f2f2; 
+  background-image: url('/static/imagen/.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 .card {
@@ -36,7 +39,7 @@
 
   a {
     display: block;
-    margin-bottom: 20px;
+    margin-bottom: 0;
     color: #333; 
     text-decoration: none;
   }
