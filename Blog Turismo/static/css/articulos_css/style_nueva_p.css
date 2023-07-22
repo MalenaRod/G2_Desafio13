@@ -26,7 +26,7 @@ h1 {
 }
 
 form {
-  max-width: 100%; /* Ajusta el ancho del formulario según tu preferencia */
+  max-width: 100%; 
   margin: 0 auto;
   padding: 20px;
   background-color: #f2f2f2;
@@ -35,15 +35,15 @@ form {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Ajusta el ancho de todos los elementos <p> generados por formulario.as_p */
+
 form p {
   width: 100%;
 }
 
-/* Ajusta el ancho de los campos de entrada de texto */
+
 form input[type="text"],
 form textarea {
-  width: 100%; /* Cambia el porcentaje */
+  width: 100%; 
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -62,7 +62,7 @@ form button {
   cursor: pointer;
 }
 
-/* Estilo adicional para el botón cuando el mause está sobre él */
+
 form button:hover {
   background-color: #444;
 }

@@ -1,25 +1,37 @@
 {% extends 'base.html' %}
 {% block contenido %}
+<head>
+  <link rel="stylesheet" type="text/css" href="/static/css/articulos_css/stylle_list.css">
+</head>
+<body>
 
-  <h1>Lista de publicaciones</h1>
+  <h1 class="center-botton">Articulos</h1>
+  
 
-    <a href="{% url 'nueva_publicacion' %}">Nueva publicación</a>
-    
-  <ul>
-    {% for publicacion in publicaciones %}
+    <div class="row">
+      {% for publicacion in publicaciones %}
+        <div class="col-4">
+          <div class="card m-3">
+            <div class="card-header">
+              {{ publicacion.fecha_publicacion }}
+            </div>    
+            <div class="card-body">
+              <h5 class="card-title">{{ publicacion.titulo }}</h5>
+              <p class="card-text">{{ publicacion.contenido|truncatewords_html:50 }}</p>
+              <a href="{% url 'detalle_publicacion' pk=publicacion.pk %}" class="btn "><i class="fab fa-github"></i> Leer mas...</a>
 
-      <div class="card m-5">
-        <div class="card-header">
-          {{ publicacion.fecha_publicacion }}
-        </div>    
-        <div class="card-body">
-        <h5 class="card-title">{{ publicacion.titulo }}</h5>
-        <p class="card-text">{{ publicacion.contenido }}</p>
-        <li><a href="{% url 'detalle_publicacion' pk=publicacion.pk %}">ver detalles</a></li>
+            </div>
+          </div>
         </div>
-      </div>
+        {% if forloop.counter|divisibleby:3 and not forloop.last %}
+          </div><div class="row">
+        {% endif %}
       {% endfor %}
-
-  </ul>
-
+    </div>
+    <div class="center-botton">
+      <a href="{% url 'nueva_publicacion' %}" class="btn-nueva-publicacion">Nueva publicación</a>
+    </div>
+  </div>
+  
+  </body>
 {% endblock contenido %}
