@@ -1,6 +1,5 @@
 body{
     background-color: #555;
-    font-family: 'Signika', sans-serif;
   }
 
 
@@ -22,6 +21,7 @@ body{
   h1 {
     font-size: 56px;
     margin-bottom: 20px;
+    font-family: 'Signika', sans-serif;
   }
 
   p {
@@ -42,12 +42,6 @@ body{
     font-size: 24px;
     margin-bottom: 20px;
   }
-
-  ul {
-    list-style-type: disc;
-    margin-left: 20px;
-  }
-
   .cta-button {
     display: inline-block;
     padding: 10px 20px;
