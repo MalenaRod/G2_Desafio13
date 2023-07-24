@@ -6,8 +6,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Signika&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="/static/css/style_index_n.css">
   <link rel="stylesheet" type="text/css" href="/static/css/style_index_card.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/style_index_n.css">
 </head>
 <body>
   <header>
@@ -21,58 +21,46 @@
         <h2>-Explora las tierras</h2>
         <h2>-Disfruta la diversidad</h2>
     <div class="img-overlay">
-      <img src="static/imagen/imgc.png" alt="">
+      <img src="static/imagen/imgce.png" alt="">
     </div>
     </div>
   </header>
 
 <div class="card-n">
 <section>
-  <h1>ULTIMOS ARTICULOS</h1>   
+  <h1>TE PUEDE INTERESAR</h1>   
 <div class="container mx-auto mt-4">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card" style="width: 18rem;">
-  <img src="https://i.imgur.com/ZTkt4I5.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-
-    <a href="#" class="btn "><i class="fab fa-github"></i> Leer mas...</a>
+   <div class="card-group">
+  <div class="card">
+    <img src="/static/imagen/art.jpeg" class="card-img-top"  alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Articulos</h5>
+      <p class="card-text">Noticias, Lugares, Comida y mucho mas en nuestra seccion de articulos</p>
+      <a href="{% url 'lista_publicaciones' %}" class="btn "><i class="fab fa-github"></i> Vamos</a>
+    </div>
   </div>
+  <div class="card">
+    <img src="/static/imagen/sbr.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Sobre Nosotros</h5>
+      <p class="card-text">Descubre quienes somos y nuestro equipo de desarollo</p>
+      <a href="#" class="btn "><i class="fab fa-github"></i> Vamos</a>
+    </div>
   </div>
-
-</div>    
-<div class="col-md-4">
-<div class="card" style="width: 18rem;">
-<img src="https://i.imgur.com/ZTkt4I5.jpg" class="card-img-top" alt="...">
-<div class="card-body">
-<h5 class="card-title">Card title</h5>
- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-<a href="#" class="btn "><i class="fab fa-github"></i> Leer mas...</a>
-</div>
-</div>
-
-</div>    
-<div class="col-md-4">
-<div class="card" style="width: 18rem;">
-<img src="https://i.imgur.com/ZTkt4I5.jpg" class="card-img-top" alt="...">
-<div class="card-body">
-<h5 class="card-title">Card title</h5>
- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-<a href="#" class="btn "><i class="fab fa-github"></i> Leer mas...</a>
-
-</div>
+  <div class="card">
+    <img src="/static/imagen/cnt.jpeg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Contactanos</h5>
+      <p class="card-text">¿Tienes algun inconveniente?, contáctanos y háznoslo saber</p>
+      <a href="#" class="btn "><i class="fab fa-github"></i> Vamos</a>
+    </div>
+  </div>
 </div>
 </section>
 
   <section id="cta">
-    <h2>Ayudanos a mejorar</h2>
-    <p>Suscribete ahora!</p>
-    <a href="{% url 'usuarios:registrarse' %}" class="cta-button">¡Inscríbete Ahora!</a>
+
+    <a href="{% url 'usuarios:registrarse' %}" class="cta-button">¡Resgitrate Ahora!</a>
   </section>
 
 </body>
