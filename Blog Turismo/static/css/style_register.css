@@ -1,55 +1,55 @@
 
 form {
-  max-width: 1000px; /* Ancho máximo del formulario */
-  margin: 0 auto; /* Centrar el formulario horizontalmente */
-  padding: 20px; /* Espacio interno del formulario */
-  border: 1px solid #ccc; /* Borde del formulario */
-  border-radius: 5px; /* Radio de esquina para hacer el formulario cuadrado */
-  font-family: Arial, sans-serif; /* Fuente del texto del formulario */
+  max-width: 1000px; 
+  margin: 0 auto;
+  padding: 20px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  font-family: Arial, sans-serif; 
   margin-top: 0px;
 }
 
-/* Estilos para las etiquetas de los campos */
+
 form label {
-  display: block; /* Mostrar las etiquetas en líneas separadas */
-  font-weight: bold; /* Texto en negrita */
-  margin-bottom: 5px; /* Espacio inferior entre etiquetas */
+  display: block; 
+  font-weight: bold; 
+  margin-bottom: 5px; 
 }
 
-/* Estilos para los campos de entrada */
+
 form input[type="text"],
 form input[type="email"],
 form input[type="password"] {
-  width: 100%; /* Ancho del 100% para llenar el ancho del formulario */
-  padding: 8px; /* Espaciado interno del campo de entrada */
-  border: 1px solid #ccc; /* Borde del campo de entrada */
-  border-radius: 5px; /* Radio de esquina para hacer el campo de entrada cuadrado */
-  margin-bottom: 10px; /* Espacio inferior entre campos de entrada */
+  width: 100%; 
+  padding: 8px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  margin-bottom: 10px; 
 }
 
-/* Estilos para el botón de envío */
+
 form button {
-  padding: 10px 20px; /* Espaciado interno del botón */
-  background-color: #888; /* Color de fondo gris más fuerte */
-  color: #fff; /* Color del texto del botón */
-  border: none; /* Eliminar el borde del botón */
-  border-radius: 5px; /* Radio de esquina para hacer el botón cuadrado */
-  cursor: pointer; /* Cambiar el cursor al pasar por encima del botón */
+  padding: 10px 20px; 
+  background-color: #888; 
+  color: #fff; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
 }
 
-/* Estilos para el botón de envío al pasar el mouse por encima */
+
 form button:hover {
-  background-color: #555; /* Color de fondo gris más oscuro */
+  background-color: #555; 
 }
 
 footer {
   text-align: center;
-  background-color: #f1f1f1; /* Color de fondo del footer */
+  background-color: #f1f1f1; 
   padding: 10px;
   position: absolute;
   bottom: 0;
   width: 100%;
-  left: 0; /* Centrar el footer horizontalmente */
+  left: 0; 
 }
 
 h1 {
@@ -58,7 +58,7 @@ h1 {
 }
 .background-image {
   position: relative;
-  background-image: url('/static/imagen/bg_r.jpg'); /* Ruta de la imagen de fondo */
+  background-image: url('/static/imagen/bg_r.jpg'); 
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -68,7 +68,7 @@ h1 {
 }
 .container {
   background-color: rgba(255, 255, 255, 0.8);
-  z-index: 1; /* Elevar el cuadro por encima de la imagen de fondo */
+  z-index: 1; 
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
