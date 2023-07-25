@@ -52,17 +52,18 @@
                 <img src="/static/imagen/log_iconn.png" class="icono-navbar">
                 </a>
             {% endif %}
+
               <ul class="dropdown-menu dropdown-menu-end">
               <li><a class="dropdown-item" href="{% url 'usuarios:login' %}">Iniciar Sesión</a></li>
               <li><a class="dropdown-item" href="{% url 'usuarios:logout' %}">Cerrar Sesión</a></li>
               <li><a class="dropdown-item" href="{% url 'usuarios:registrarse' %}">Registrarse</a></li>
               
-              {% if user.is_autenticated %}
+              {% if user.is_authenticated %}
                 
-                <li><a class="dropdown-item" href="{% url 'editar-usuario' pk=usuario.id %}">Editar Usuario</a></li>   
+                <li><a class="dropdown-item" href="{% url 'usuarios:editar_usuario' pk=user.id %}">Editar Perfil</a></li>   
 
-                {% else %}
-                <li><a class="dropdown-item" href="#">Editar Usuario</a></li>
+              {% else %}
+                <li><a class="dropdown-item" href="#">~ ~ ~ ~ ~</a></li>
 
               {% endif %}
                 
