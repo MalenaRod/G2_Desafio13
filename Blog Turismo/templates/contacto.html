@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+    
+    <head> 
+        <link rel="stylesheet" type="text/css" href="/static/css/style_contacto.css">
+    </head>
+    
+    <h2>¡Gracias por visitar nuestra página de contacto!</h2>
+    <p>Si tienes alguna pregunta o comentario, por favor completa el siguiente formulario:</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <div>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <div>
+
+        <div>    
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        </div>
+
+        </div>
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="mensaje" required></textarea>
+        </div> 
+
+        <button type="submit">Enviar</button>
+    </form>
+{% endblock contenido %}

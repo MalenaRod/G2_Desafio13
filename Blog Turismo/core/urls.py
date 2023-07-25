@@ -6,4 +6,5 @@ urlpatterns = [
 	path('', views.indexView, name = 'index'),
     path('usuario/', include('Usuarios_app.urls'), name = 'usuario'),
     path('articulos/', include('Articulos_app.urls')),
+    path('contacto/', views.vistaContactenos, name='contacto'),
 ] 
