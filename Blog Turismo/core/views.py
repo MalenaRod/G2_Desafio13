@@ -10,3 +10,6 @@ def indexView(request):
 def vistaContactenos(request):
     return render(request, 'contacto.html', {})
 
+def vistaAcerca(request):
+    return render(request, 'acerca.html', {})
+

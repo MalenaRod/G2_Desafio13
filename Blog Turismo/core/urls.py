@@ -7,4 +7,5 @@ urlpatterns = [
     path('usuario/', include('Usuarios_app.urls'), name = 'usuario'),
     path('articulos/', include('Articulos_app.urls')),
     path('contacto/', views.vistaContactenos, name='contacto'),
+    path('cacerca_de/', views.vistaAcerca, name='acerca'),
 ] 

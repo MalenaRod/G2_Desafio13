@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    background-image: url("/static/imagen/bg_pag/bg_sbr.jpg");
+    background-size: cover;
+    background-position: center;
+    background-color: #f9f9f9;
+}
+
+.container_1 {
+    width: 1800px;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: auto;
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    padding: 20px;
+    margin: 30px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.team-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.person {
+    text-align: center;
+    border-radius: 0%;
+}
+
+.person img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.role {
+    font-size: 16px;
+    font-style: italic;
+}
+
+.description {
+    font-size: 16px;
+}

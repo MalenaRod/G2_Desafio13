@@ -58,7 +58,7 @@ h1 {
 }
 .background-image {
   position: relative;
-  background-image: url('/static/imagen/bg_r.jpg'); 
+  background-image: url('/static/imagen/bg_pag/bg_r.jpg'); 
   background-size: cover;
   background-position: center;
   height: 100vh;

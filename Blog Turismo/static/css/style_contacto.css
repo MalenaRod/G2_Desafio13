@@ -2,7 +2,7 @@
 
 body {
     /* Establecer la imagen de fondo */
-    background-image: url('/static/imagen/algodon.jpg');
+    background-image: url('/static/imagen/bg_pag/algodon.jpg');
     /* Ajustar el tamaño de la imagen de fondo */
     background-size: cover;
     /* Centrar la imagen de fondo */
