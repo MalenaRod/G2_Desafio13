@@ -1,9 +1,9 @@
-from django.shortcuts import render
 from django.urls import reverse
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Publicacion, Categoria
-from .forms import PublicacionForm
+from .forms import PublicacionForm, ComentarioForm
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
+
 
 #cambio de funcion a clase
 '''def lista_publicaciones(request):
@@ -45,9 +45,25 @@ class lista_publicaciones(ListView):
 
 
 
-def detalle_publicacion(request, pk):
+# Cambio de funcion a clase la view del detalle de publicación
+
+'''def detalle_publicacion(request, pk):
     publicacion = get_object_or_404(Publicacion, pk=pk)
-    return render(request, 'articulos/detalle_publicacion.html', {'publicacion': publicacion})
+    return render(request, 'articulos/detalle_publicacion.html', {'publicacion': publicacion})'''
+
+class detalle_publicacion(DetailView):
+    model = Publicacion
+    template_name = "articulos/detalle_publicacion.html"
+    context_object_name = 'articulo'
+
+    #metodo para crear un metodo post en el detalle de publicacion
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form_comentario'] = ComentarioForm()
+        return context
+    
+    
+
 
 def nueva_publicacion(request):
     if request.method == "POST":

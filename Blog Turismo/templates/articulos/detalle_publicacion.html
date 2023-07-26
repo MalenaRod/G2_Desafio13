@@ -18,4 +18,11 @@
       </div>
     </div>
   </div>
+  <form method="post"> {% csrf_token %}
+
+    {{ form_comentario }}
+    
+    <button type="submit"> Comentar </button>
+  </form>
+
 {% endblock contenido %}
