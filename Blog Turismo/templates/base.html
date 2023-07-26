@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chaco Turismo</title>
-    <!--ESTILOS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/style_base_n.css">
     <style>
@@ -32,40 +31,30 @@
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
             {% if user.is_authenticated %}
-
-            
-              {% if user.imagen %}
-                <img src="{{ user.imagen.url }}"alt="imagen de perfil" class="rounded-circle" width="40" height="40">
-                
-                {{user.first_name}}
-                              
-              {% endif %}
-
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 {{user.first_name}}
-                <img src="static/imagen/log_iconn.png" class="icono-navbar">
+                  
+                  {% if user.imagen %}
+                  <img src="{{ user.imagen.url }}" class="icono-navbar">
+                  {% else %}
+                  <img src="/static/imagen/log_iconn.png" class="icono-navbar">
+                  {% endif %}                    
                 </a>
               {% else %}
                 <a class="nav-link dropdown-toggle" href="{% url 'usuarios:login' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Log In
                 <img src="/static/imagen/log_iconn.png" class="icono-navbar">
                 </a>
-            {% endif %}
-
+              {% endif %}
               <ul class="dropdown-menu dropdown-menu-end">
               <li><a class="dropdown-item" href="{% url 'usuarios:login' %}">Iniciar Sesión</a></li>
               <li><a class="dropdown-item" href="{% url 'usuarios:logout' %}">Cerrar Sesión</a></li>
-              <li><a class="dropdown-item" href="{% url 'usuarios:registrarse' %}">Registrarse</a></li>
-              
-              {% if user.is_authenticated %}
-                
+              <li><a class="dropdown-item" href="{% url 'usuarios:registrarse' %}">Registrarse</a></li>              
+              {% if user.is_authenticated %}                
                 <li><a class="dropdown-item" href="{% url 'usuarios:editar_usuario' pk=user.id %}">Editar Perfil</a></li>   
-
               {% else %}
-                <li><a class="dropdown-item" href="#">~ ~ ~ ~ ~</a></li>
-
-              {% endif %}
-                
+                <li><a class="dropdown-item" href="#"></a></li>
+              {% endif %}                
             </ul>
           </li>
         </ul>

@@ -1,0 +1,15 @@
+.person {
+  text-align: center;
+  border-radius: 0%;
+  }
+  
+  .person img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+  }
+h4{
+  text-align: center;
+  margin: 20px;
+}

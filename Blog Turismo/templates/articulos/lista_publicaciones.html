@@ -4,10 +4,7 @@
   <link rel="stylesheet" type="text/css" href="/static/css/articulos_css/style_list.css"> 
 </head>
 <body>
-
   <h1 class="center-botton">Articulos</h1>
-
-
   <div class="row row-cols-1 row-cols-md-3 g-4">
     {% for publicacion in publicaciones %}
       <div class="col-4"> 
@@ -16,7 +13,6 @@
           <div class="card-body">
             <h5 class="card-title">{{ publicacion.titulo }}</h5>
             <p class="card-text">{{ publicacion.contenido|truncatewords_html:50 }}</p>
-
           </div>
           <div class="card-footer">
             <small class="text-body-secondary d-flex justify-content-between align-items-center">
