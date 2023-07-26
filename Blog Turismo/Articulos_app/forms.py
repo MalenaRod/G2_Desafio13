@@ -4,4 +4,15 @@ from .models import Publicacion
 class PublicacionForm(forms.ModelForm):
     class Meta:
         model = Publicacion
-        fields = ('titulo', 'contenido', 'imagen')
+        fields = ('titulo', 'contenido', 'imagen', 'categoria')
+        labels = {
+            'titulo': '',
+            'contenido': '',
+            'categoria': 'Categoría'
+        }        
+
+
+        widgets = {
+            'titulo': forms.TextInput(attrs={'placeholder': 'Ingrese el título', 'class': 'form-control'}),
+            'contenido': forms.Textarea(attrs={'placeholder': 'Escriba el articulo', 'class': 'form-control', 'rows': 4}),
+        }
