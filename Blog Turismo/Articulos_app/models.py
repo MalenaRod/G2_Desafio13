@@ -30,3 +30,11 @@ class Publicacion(models.Model):
         self.imagen.delete(self.imagen.name)
         super().delete()
     
+class Comentario(models.Model):
+    texto = models.TextField()
+    fecha = models.DateField(auto_now_add=True)
+    post = models.ForeignKey(Publicacion, on_delete=models.CASCADE, related_name='comentarios')
+    autor = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='comentarios')
+
+    def __str__(self):
+        return self.post.titulo + '-' + self.autor.first_name

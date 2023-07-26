@@ -1,19 +1,35 @@
 from django.shortcuts import render
 from django.urls import reverse
-
+from django.views.generic import DetailView
 # Create your views here.
 
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Publicacion
-from .forms import PublicacionForm
+from .forms import PublicacionForm , ComentarioForm
 
 def lista_publicaciones(request):
     publicaciones = Publicacion.objects.all()
     return render(request, 'articulos/lista_publicaciones.html', {'publicaciones': publicaciones})
 
-def detalle_publicacion(request, pk):
+# Cambio de funcion a clase la view del detalle de publicación
+
+'''def detalle_publicacion(request, pk):
     publicacion = get_object_or_404(Publicacion, pk=pk)
-    return render(request, 'articulos/detalle_publicacion.html', {'publicacion': publicacion})
+    return render(request, 'articulos/detalle_publicacion.html', {'publicacion': publicacion})'''
+
+class detalle_publicacion(DetailView):
+    model = Publicacion
+    template_name = "articulos/detalle_publicacion.html"
+    context_object_name = 'articulo'
+
+    #metodo para crear un metodo post en el detalle de publicacion
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form_comentario'] = ComentarioForm()
+        return context
+    
+    
+
 
 def nueva_publicacion(request):
     if request.method == "POST":
