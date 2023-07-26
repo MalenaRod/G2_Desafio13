@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+
+{% block contenido %}
+    <form method="post">{% csrf_token %}
+        <p>¿Estas seguro de eliminar el articulo?</p>
+        <button type="submit">Eliminar</button>
+    </form>
+{% endblock contenido %}

@@ -1,9 +1,12 @@
+from django.forms.models import BaseModelForm
+from django.http import HttpResponse
 from django.urls import reverse
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Publicacion, Categoria
+from .models import Publicacion, Categoria, Comentario
 from .forms import PublicacionForm, ComentarioForm
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
-
+from django.contrib.auth.mixins import LoginRequiredMixin
+from core.mixins import Super_autor_mixin, Colab_Mixin
 
 #cambio de funcion a clase
 '''def lista_publicaciones(request):
@@ -29,7 +32,7 @@ class lista_publicaciones(ListView):
             queryset = queryset.filter(categoria = categoria_seleccionada)
         
         # Orden
-        orden = self.request.GET.get('orderby')
+        orden = self.request.GET.get('orden')
         if orden:
             if orden == 'fecha_asc':
                 queryset = queryset.order_by('fecha')
@@ -42,7 +45,6 @@ class lista_publicaciones(ListView):
 
 
         return queryset
-
 
 
 # Cambio de funcion a clase la view del detalle de publicación
@@ -64,35 +66,30 @@ class detalle_publicacion(DetailView):
     
     
 
+class nueva_publicacion(LoginRequiredMixin, Colab_Mixin, CreateView):
+    model = Publicacion
+    template_name = 'articulos/nueva_publicacion.html'
+    form_class = PublicacionForm
 
-def nueva_publicacion(request):
-    if request.method == "POST":
-        formulario = PublicacionForm(request.POST, request.FILES)
-        if formulario.is_valid():
-            publicacion = formulario.save(commit=False)
-            publicacion.save()
-            return redirect('articulos/../../../articulos', pk=publicacion.pk)
+    def get_success_url(self):
+        return reverse('articulos:lista_publicaciones')
 
-     #return redirect('articulos/detalle_publicacion', pk=publicacion.pk)
-     #return reverse('articulos:lista_publicaciones')
+    def form_valid(self, form):
+        f = form.save(commit=False)
+        f.autor_id = self.request.user.id
+        return super().form_valid(f)
     
-    else:
-        formulario = PublicacionForm()
-    return render(request, 'articulos/nueva_publicacion.html', {'formulario': formulario})
+class editar_publicacion(LoginRequiredMixin, Super_autor_mixin, UpdateView):
+    model = Publicacion
+    template_name = 'articulos/editar_publicacion.html'
+    form_class = PublicacionForm 
 
-def editar_publicacion(request, pk):
-    publicacion = get_object_or_404(Publicacion, pk=pk)
-    if request.method == "POST":
-        formulario = PublicacionForm(request.POST, request.FILES, instance=publicacion)
-        if formulario.is_valid():
-            publicacion = formulario.save(commit=False)
-            publicacion.save()
-            return redirect('detalle_publicacion', pk=publicacion.pk)
-    else:
-        formulario = PublicacionForm(instance=publicacion)
-    return render(request, 'articulos/editar_publicacion.html', {'formulario': formulario})
+    def get_success_url(self):
+        return reverse('articulos:lista_publicaciones')
 
-def eliminar_publicacion(request, pk):
-    publicacion = get_object_or_404(Publicacion, pk=pk)
-    publicacion.delete()
-    return redirect('lista_publicaciones')
+class eliminar_publicacion(LoginRequiredMixin, Super_autor_mixin, DeleteView):
+    template_name = 'articulos/eliminar_publicacion.html'
+    model = Publicacion
+
+def get_success_url(self):
+        return reverse('articulos:lista_publicaciones')

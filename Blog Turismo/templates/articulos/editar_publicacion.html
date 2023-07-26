@@ -9,11 +9,12 @@
   <div class="container">
     <div class="contenido">
         <h1>Editar Publicacion {{ publicacion.titulo }}</h1>
-        <form method="post" enctype="multipart/form-data" style="width:1300px;">
-          {% csrf_token %}
-          {{ formulario.as_p }}
+        <form method="post">{% csrf_token %}
+
+          {{form.as_p}}
           <button type="submit">Guardar</button>
-        </form>
+  
+      </form>
       </div>
     </div>
 </body>

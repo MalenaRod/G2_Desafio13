@@ -6,17 +6,20 @@
   </head>
   <div class="page-container">
     <div class="post-container">
-      <img src="{{ publicacion.imagen.url }}" alt="{{ publicacion.titulo }}" class="post-image">
+      <img src="{{ Publicacion.imagen.url }}" alt="{{ articulo.titulo }}" class="post-image">
       <div class="center-botton">
-        <p>Fecha de publicación: {{ publicacion.fecha_publicacion }}</p>
-        <h1>{{ publicacion.titulo }}</h1>
-        <p>{{ publicacion.contenido }}</p>
+        <p>Fecha de publicación: {{ articulo.fecha_publicacion }}</p>
+        <h1>{{ articulo.titulo }}</h1>
+        <p>{{ articulo.contenido }}</p>
       </div>
       <div class="options-container">
-        <a href="{% url 'editar_publicacion' pk=publicacion.pk %}" class="btn-editar">Editar</a>
-        <a href="{% url 'eliminar_publicacion' pk=publicacion.pk %}" class="btn-eliminar">Eliminar</a>
+        {% if user.is_superuser or user == articulo.autor %}
+        <a href="{% url 'articulos:editar_publicacion' articulo.id %}" class="btn-editar">Editar</a>
+        <a href="{% url 'articulos:eliminar_publicacion' articulo.id %}" class="btn-eliminar">Eliminar</a>
+        {% endif %}
       </div>
     </div>
+  
   </div>
   <form method="post"> {% csrf_token %}
 
