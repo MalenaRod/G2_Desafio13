@@ -20,7 +20,7 @@ class Publicacion(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.SET_NULL, related_name='articulos', null= True)
     autor = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='usuario_articulos')
 
-    class Meta:
+'''    class Meta:
         ordering = ['fecha_publicacion']
 
     def __str__(self):
@@ -29,7 +29,7 @@ class Publicacion(models.Model):
     def delete(self, using = None, keep_parents = False):
         self.imagen.delete(self.imagen.name)
         super().delete()
-    
+    '''
 class Comentario(models.Model):
     texto = models.TextField()
     fecha = models.DateField(auto_now_add=True)
