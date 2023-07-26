@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+
 # Create your views here.
 
 def indexView(request):
@@ -9,4 +10,6 @@ def indexView(request):
 
 def vistaContactenos(request):
     return render(request, 'contacto.html', {})
+
+
 
