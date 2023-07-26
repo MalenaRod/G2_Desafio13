@@ -1,15 +1,49 @@
 from django.shortcuts import render
 from django.urls import reverse
-
-# Create your views here.
-
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Publicacion
+from .models import Publicacion, Categoria
 from .forms import PublicacionForm
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
-def lista_publicaciones(request):
+#cambio de funcion a clase
+'''def lista_publicaciones(request):
     publicaciones = Publicacion.objects.all()
-    return render(request, 'articulos/lista_publicaciones.html', {'publicaciones': publicaciones})
+    return render(request, 'articulos/lista_publicaciones.html', {'publicaciones': publicaciones})'''
+
+class lista_publicaciones(ListView):
+    model = Publicacion
+    template_name = 'articulos/lista_publicaciones.html'
+    context_object_name = 'articulos'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categorias'] = Categoria.objects.all
+        return context
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        
+        #Filtro por categoria
+        categoria_seleccionada = self.request.GET.get('categoria')
+        if categoria_seleccionada:
+            queryset = queryset.filter(categoria = categoria_seleccionada)
+        
+        # Orden
+        orden = self.request.GET.get('orderby')
+        if orden:
+            if orden == 'fecha_asc':
+                queryset = queryset.order_by('fecha')
+            elif orden == 'fecha_desc':
+                queryset = queryset.order_by('-fecha')
+            elif orden == 'alf_asc':
+                queryset = queryset.order_by('titulo')
+            elif orden == 'alf_desc':
+                queryset = queryset.order_by('-titulo')
+
+
+        return queryset
+
+
 
 def detalle_publicacion(request, pk):
     publicacion = get_object_or_404(Publicacion, pk=pk)
