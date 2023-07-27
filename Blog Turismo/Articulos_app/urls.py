@@ -9,4 +9,5 @@ urlpatterns = [
     path('nueva/', views.nueva_publicacion.as_view(), name='nueva_publicacion'),
     path('editar-articulo/<int:pk>', views.editar_publicacion.as_view(), name='editar_publicacion'),
     path('eliminar-articulo/<int:pk>', views.eliminar_publicacion.as_view(), name='eliminar_publicacion'),
+    path('borrar-comentario/<int:pk>', views.BorrarComentario.as_view(), name='borrar-comentario'),
 ]

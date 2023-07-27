@@ -19,13 +19,30 @@
         {% endif %}
       </div>
     </div>
-  
   </div>
-  <form method="post"> {% csrf_token %}
+  <div class="comentarios-container">
+    <h2>Comentarios</h2>
+        {% for comentario in articulo.comentarios.all  %}
+          <div class="card">
+            <div class="card-body">
+              <h2>{{comentario.autor.first_name}} {{comentario.autor.last_name}}</h2>
+              <p>{{comentario.texto}}</p>
 
-    {{ form_comentario }}
-    
-    <button type="submit"> Comentar </button>
+              
+              {% if user.is_superuser or user == comentario.autor %}
+              <a href="{% url 'articulos:borrar-comentario' comentario.id %}">Eliminar</a>
+                
+              {% endif %}
+                
+            </div>
+          </div>
+        {% endfor %}
+  </div>
+
+  <form method="post" action="{% url 'articulos:detalle_publicacion' pk=articulo.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enviar</button>
   </form>
 
 {% endblock contenido %}

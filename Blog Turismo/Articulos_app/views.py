@@ -7,11 +7,9 @@ from .forms import PublicacionForm, ComentarioForm
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from core.mixins import Super_autor_mixin, Colab_Mixin
+from django.views.generic.edit import FormView
+from django.urls import reverse_lazy
 
-#cambio de funcion a clase
-'''def lista_publicaciones(request):
-    publicaciones = Publicacion.objects.all()
-    return render(request, 'articulos/lista_publicaciones.html', {'publicaciones': publicaciones})'''
 
 class lista_publicaciones(ListView):
     model = Publicacion
@@ -47,24 +45,36 @@ class lista_publicaciones(ListView):
         return queryset
 
 
-# Cambio de funcion a clase la view del detalle de publicación
-
-'''def detalle_publicacion(request, pk):
-    publicacion = get_object_or_404(Publicacion, pk=pk)
-    return render(request, 'articulos/detalle_publicacion.html', {'publicacion': publicacion})'''
-
-class detalle_publicacion(DetailView):
-    model = Publicacion
+class detalle_publicacion(FormView):
     template_name = "articulos/detalle_publicacion.html"
-    context_object_name = 'articulo'
-
-    #metodo para crear un metodo post en el detalle de publicacion
+    form_class = ComentarioForm
+    
+    def get_success_url(self):
+        return reverse_lazy('articulos:detalle_publicacion', kwargs={'pk': self.kwargs['pk']})
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['form_comentario'] = ComentarioForm()
+        context['articulo'] = Publicacion.objects.get(pk=self.kwargs['pk'])
         return context
+
+    def form_valid(self, form):
+        if not self.request.user.is_authenticated:
+            return redirect('usuarios:login')
+        comentario = form.save(commit=False)
+        comentario.autor = self.request.user
+        comentario.contenido = Publicacion.objects.get(pk=self.kwargs['pk'])
+        comentario.save()
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        return super().form_invalid(form)
     
-    
+class BorrarComentario(Super_autor_mixin, LoginRequiredMixin,DeleteView):
+    model=Comentario
+    template_name= 'articulos/borrar-comentario.html'
+
+    def get_success_url(self):
+        return reverse('articulos:detalle_publicacion', args=[self.object.contenido.id])
 
 class nueva_publicacion(LoginRequiredMixin, Colab_Mixin, CreateView):
     model = Publicacion
