@@ -5,27 +5,62 @@
 </head>
 <body>
   <h1 class="center-botton">Articulos</h1>
+      <form method="get">
+        <p>Seleccione una categoría para filtrar los articulos</p>
+        <div class="input-group mb-4 d-flex">
+          <select name="categoria" id="id_categoria" class="form-select">
+            <option value="">Todas nuestras categorias</option>
+            {% for categoria in categorias %}
+              <option value="{{ categoria.cat_nombre }}"
+                {% if categoria.cat_nombre == categoria_seleccionada %}selected{% endif %}>
+                {{categoria.cat_nombre}}
+              </option>
+            {% endfor %}
+            
+          </select>
+          <button class="btn btn-primary ml-2" type="submit">Filtrar</button>
+        </div>
+      
+
+        <p>Seleccione un orden para filtrar los articulos</p>      
+        <select name="orden" id="">
+          
+          <option value="">Ordenar por</option>
+          <option value="fecha_asc">Fecha ascendente</option>
+          <option value="fecha_desc">Fecha descendente</option>
+          <option value="alf_asc">Alfabeticamente ascendente</option>
+          <option value="alf_desc">Alfabeticamente descendente</option>
+    
+        </select>
+        <button class="btn btn-primary ml-2" type="submit">Ordenar</button>
+      </form>
+
   <div class="row row-cols-1 row-cols-md-3 g-4">
-    {% for publicacion in publicaciones %}
+    {% for articulo in articulos %}
       <div class="col-4"> 
         <div class="card h-100">
-          <img src="{{ publicacion.imagen.url }}" class="card-img-top" alt="...">
+          <img src="{{ articulos.imagen.url }}" width="80%" height="80%" alt="..." />
           <div class="card-body">
-            <h5 class="card-title">{{ publicacion.titulo }}</h5>
-            <p class="card-text">{{ publicacion.contenido|truncatewords_html:50 }}</p>
+            <h5 class="card-title">{{ articulo.titulo }}</h5>
+            <p class="card-text">{{ articulo.contenido|truncatewords_html:50 }}</p>
           </div>
           <div class="card-footer">
             <small class="text-body-secondary d-flex justify-content-between align-items-center">
-              <span>{{ publicacion.fecha_publicacion }}</span>
-              <a href="{% url 'detalle_publicacion' pk=publicacion.pk %}" class="btn "><i class="fab fa-github"></i> Leer mas...</a>
+              <p class="card-text">{{ articulo.categoria }}</p>
+              <p class="card-text">{{ articulo.autor }}</p>
+              <span>{{ articulo.fecha_publicacion }}</span>
+              <a href="{% url 'articulos:detalle_publicacion' articulo.id %}" class="btn "><i class="fab fa-github"></i> Leer mas...</a>
             </small>
+
           </div>
         </div>
       </div>
     {% endfor %}
   </div>
     <div class="center-botton">
-      <a href="{% url 'nueva_publicacion' %}" class="btn-nueva-publicacion">Nueva publicación</a>
+      {% if user.is_authenticated %}
+        <a href="{% url 'articulos:nueva_publicacion' %}" class="btn-nueva-publicacion">Nueva publicación</a>
+      {% endif %}
     </div>
   </div>
 </body>

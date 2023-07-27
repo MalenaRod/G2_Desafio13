@@ -1,5 +1,6 @@
 
 {% extends 'base.html' %}
+{% load static %}
 
 {% block contenido %}
 <head>
@@ -14,7 +15,7 @@
         <div class="team-container">
             <div class="person">
                 <a href="https://github.com/JoseAFi" target="_blank">
-                    <img src="/static/imagen/logo_dev/img1.jpg"  alt="Persona More">
+                    <img src="{% static 'imagen/logo_dev/img1.jpg' %}"  alt="Persona 1">
                 </a>
                 <div class="name">José A. Figueroa </div>
                 <div class="role">Desarollador</div>
@@ -25,7 +26,7 @@
 
             <div class="person">
                 <a href="https://github.com/Shikoramy" target="_blank">
-                    <img src="/static/imagen/logo_dev/img2.png"  alt="Persona More">
+                    <img src="{% static 'imagen/logo_dev/img2.png' %}"  alt="Persona 2">
                 </a>
                 <div class="name">Fernando J. Svoboda</div>
                 <div class="role">Diseñador</div>
@@ -33,18 +34,20 @@
                     <p></p>
                 </div>
             </div>
-
+            
             <div class="person">
-                <img src="/static/imagen/cnt.jpeg" alt="Persona 3">
-                <div class="name">Persona 3</div>
-                <div class="role">Cargo 3</div>
+                <a href="https://github.com/MalenaRod" target="_blank">
+                    <img src="{% static 'imagen/logo_dev/Male.jpg' %}" alt="Persona 3">
+                </a>
+                <div class="name">Malena G. Rodriguez</div>
+                <div class="role">Desarrolladora</div>
                 <div class="description">
-                    <p>Información sobre la Persona 3...</p>
+                    <p></p>
                 </div>
             </div>
 
             <div class="person">
-                <img src="/static/imagen/cnt.jpeg" alt="Persona 4">
+                <img src="{% static 'imagen/ctn.jpeg' %}" alt="Persona 4">
                 <div class="name">Persona 4</div>
                 <div class="role">Cargo 4</div>
                 <div class="description">
@@ -53,7 +56,7 @@
             </div>
 
             <div class="person">
-                <img src="/static/imagen/cnt.jpeg" alt="Persona 5">
+                <img src="{% static 'imagen/ctn.jpeg' %}" alt="Persona 5">
                 <div class="name">Persona 5</div>
                 <div class="role">Cargo 5</div>
                 <div class="description">
@@ -63,7 +66,7 @@
 
             <div class="person">
                 <a href="https://github.com/MalenaRod/G2_ProyectoFinal" target="_blank">
-                    <img src="/static/imagen/logo_dev/imgmore.png" alt="Persona More">
+                    <img src="{% static 'imagen/logo_dev/imgmore.png' %}" alt="Persona More">
                 </a>
                 <div class="name">MORE</div>
                 <div class="role">Info</div>
