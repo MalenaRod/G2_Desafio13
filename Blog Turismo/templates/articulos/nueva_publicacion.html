@@ -9,7 +9,7 @@
     <div class="container">
       <div class="contenido">
         <h1>Nueva publicación</h1>
-        <form method="post" style="width:1300px;">{% csrf_token %}
+        <form method="post" enctype="multipart/form-data">{% csrf_token %}
           
           {{ form.as_p }}
           

@@ -1,14 +1,14 @@
-from django.forms.models import BaseModelForm
-from django.http import HttpResponse
-from django.urls import reverse
-from django.shortcuts import render, get_object_or_404, redirect
+
+from django.urls import reverse, reverse_lazy
+from django.shortcuts import redirect
 from .models import Publicacion, Categoria, Comentario
 from .forms import PublicacionForm, ComentarioForm
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from core.mixins import Super_autor_mixin, Colab_Mixin
 from django.views.generic.edit import FormView
-from django.urls import reverse_lazy
+from django.http import Http404
+
 
 
 class lista_publicaciones(ListView):
@@ -27,15 +27,15 @@ class lista_publicaciones(ListView):
         #Filtro por categoria
         categoria_seleccionada = self.request.GET.get('categoria')
         if categoria_seleccionada:
-            queryset = queryset.filter(categoria = categoria_seleccionada)
+            queryset = queryset.filter(categoria__cat_nombre = categoria_seleccionada)
         
         # Orden
-        orden = self.request.GET.get('orden')
+        orden = self.request.GET.get('orderby')
         if orden:
             if orden == 'fecha_asc':
-                queryset = queryset.order_by('fecha')
+                queryset = queryset.order_by('fecha_publicacion')
             elif orden == 'fecha_desc':
-                queryset = queryset.order_by('-fecha')
+                queryset = queryset.order_by('-fecha_publicacion')
             elif orden == 'alf_asc':
                 queryset = queryset.order_by('titulo')
             elif orden == 'alf_desc':
@@ -75,6 +75,15 @@ class BorrarComentario(Super_autor_mixin, LoginRequiredMixin,DeleteView):
 
     def get_success_url(self):
         return reverse('articulos:detalle_publicacion', args=[self.object.contenido.id])
+    
+
+class EditarComentario(Super_autor_mixin, LoginRequiredMixin, UpdateView):
+    model = Comentario
+    form_class = ComentarioForm
+    template_name = 'articulos/editar_comentario.html'
+
+    def get_success_url(self):
+        return reverse('articulos:detalle_publicacion', args=[self.object.contenido.id])
 
 class nueva_publicacion(LoginRequiredMixin, Colab_Mixin, CreateView):
     model = Publicacion
@@ -100,6 +109,14 @@ class editar_publicacion(LoginRequiredMixin, Super_autor_mixin, UpdateView):
 class eliminar_publicacion(LoginRequiredMixin, Super_autor_mixin, DeleteView):
     template_name = 'articulos/eliminar_publicacion.html'
     model = Publicacion
+    success_url = reverse_lazy('articulos:lista_publicaciones')
 
-def get_success_url(self):
-        return reverse('articulos:lista_publicaciones')
+    def test_func(self):
+        return self.request.user.is_superuser or self.get_object().autor == self.request.user
+
+    def get_object(self, queryset=None):
+        obj = super().get_object(queryset)
+        if not self.request.user.is_superuser and not obj.autor == self.request.user:
+            raise Http404
+        return obj
+
