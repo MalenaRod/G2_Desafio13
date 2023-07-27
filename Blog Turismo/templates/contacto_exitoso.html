@@ -1,0 +1,19 @@
+
+{% block contenido %}
+    
+<head> 
+    <link rel="stylesheet" type="text/css" href="/static/css/style_contactoexitoso.css">
+</head>
+    <title>Formulario enviado</title>
+</head>
+<body>
+    <div class="container">
+        <h1>¡Formulario enviado con éxito!</h1>
+        <p>Gracias por contactarnos. Responderemos a tu mensaje pronto.</p>
+        <a href="{% url 'index' %}" class="button">Volver al inicio</a>
+    </div>
+</body>
+</html>
+
+{% endblock contenido %}
+    
