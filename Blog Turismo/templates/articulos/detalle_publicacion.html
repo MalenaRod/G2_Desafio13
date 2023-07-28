@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block contenido %}
   <head>
@@ -19,6 +20,31 @@
         <a href="{% url 'articulos:editar_publicacion' articulo.id %}" class="btn-editar">Editar</a>
         <a href="{% url 'articulos:eliminar_publicacion' articulo.id %}" class="btn-eliminar">Eliminar</a>
         {% endif %}
+
+        <hr>
+
+        <form action="{% url 'articulos:me-gusta' %}" method="post" id="boton-me-gusta" >{% csrf_token %}
+          <input type="hidden" name="articulo_id" value="{{articulo.id}}">
+
+
+          {% if user in articulo.megusta.all %}
+     
+
+          <button type="submit" class="btn btn-outline-dark">
+              <img src="{% static 'imagen/filled_black_heart.png' %}" alt="Like" width= 40px height= 40px  >
+              Ya no me gusta</button>
+
+          {% else %}
+
+
+          <button type="submit" class="btn btn-outline-dark">
+              <img src="{% static 'imagen/empty_black_heart.png' %}" alt="Like" width= 40px height= 40px  >
+              Me gusta!</button>
+
+          {% endif %}
+
+        </form>
+
       </div>
     </div>
   </div>
