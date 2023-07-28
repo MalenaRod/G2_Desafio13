@@ -33,6 +33,11 @@
               
               {% if user.is_superuser or user == comentario.contenido.autor %}
               <a href="{% url 'articulos:borrar-comentario' comentario.id %}">Eliminar</a>
+                
+                {% if user == comentario.autor %}
+                  <a href="{% url 'articulos:editar_comentario' comentario.id %}">Editar</a>
+                {% endif %}
+                  
 
               {% elif user == comentario.autor %}
               <a href="{% url 'articulos:borrar-comentario' comentario.id %}">Eliminar</a>
