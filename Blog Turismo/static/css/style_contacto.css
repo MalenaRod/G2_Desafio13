@@ -1,17 +1,15 @@
 /* style_contacto.css */
 
 body {
-    /* Establecer la imagen de fondo */
+  
     background-image: url('/static/imagen/bg_pag/algodon.jpg');
-    /* Ajustar el tamaño de la imagen de fondo */
     background-size: cover;
-    /* Centrar la imagen de fondo */
     background-position: center;
 }
 
 
 
-/* Estilos generales para el formulario */
+
 form {
     max-width: 350px;
     margin: 0 auto;
@@ -25,7 +23,7 @@ form {
 h1 {
     margin-left: 20px;
     font-size: 38px;
-    color: #ffffff; /* claro */
+    color: #ffffff; 
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
@@ -33,13 +31,13 @@ h2 {
     margin-left: 20px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     font-size: 20px;
-    color: #ffffff; /* claro */
+    color: #ffffff; 
 }
 
 label {
     display: block;
     margin-bottom: 5px;
-    color: #442503; /* claro */
+    color: #442503; 
 }
 
 input[type="text"],
@@ -48,7 +46,7 @@ textarea {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
-    border: 1px solid #663300; /* Marrón oscuro */
+    border: 1px solid #663300; 
     border-radius: 3px;
 }
 
@@ -58,7 +56,7 @@ textarea {
 
 button[type="submit"] {
     padding: 10px 20px;
-    background-color: #228B22; /* Verde forest */
+    background-color: #228B22; 
     color: white;
     border: none;
     border-radius: 3px;
@@ -71,10 +69,10 @@ button[type="submit"] {
 #ciudad,
 #edad,
 #mensaje {
-    background-color: #fff; /* Blanco */
+    background-color: #fff; 
 }
 
 /* Estilo para el botón "Enviar" cuando el cursor esté sobre él */
 button[type="submit"]:hover {
-    background-color: #006400; /* Verde oscuro */
+    background-color: #006400; 
 }
