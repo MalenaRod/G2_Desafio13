@@ -15,6 +15,7 @@ class lista_publicaciones(ListView):
     model = Publicacion
     template_name = 'articulos/lista_publicaciones.html'
     context_object_name = 'articulos'
+    paginate_by = 3
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
