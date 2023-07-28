@@ -32,10 +32,11 @@ class Publicacion(models.Model):
     titulo = models.CharField(max_length=200)
     contenido = models.TextField()
     imagen = models.ImageField(upload_to='imagenes_articulos', blank=True, null=True)
-    fecha_publicacion = models.DateField(auto_now_add=True)
-    fecha_actualizacion = models.DateField(auto_now_add=True)
+    fecha_publicacion = models.DateTimeField(auto_now_add=True)
+    fecha_actualizacion = models.DateTimeField(auto_now_add=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.SET_NULL, related_name='articulos', null= True)
     autor = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='usuario_articulos')
+    megusta= models.ManyToManyField(Usuario, related_name='articulos_megusta', blank=True)
 
     def delete(self, *args, **kwargs):
         # Eliminar imagen si existe

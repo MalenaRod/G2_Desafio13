@@ -11,4 +11,5 @@ urlpatterns = [
     path('eliminar-articulo/<int:pk>', views.eliminar_publicacion.as_view(success_url='/articulos/articulos'), name='eliminar_publicacion'),
     path('borrar-comentario/<int:pk>', views.BorrarComentario.as_view(), name='borrar-comentario'),
     path('editar-comentario/<int:pk>/', views.EditarComentario.as_view(), name='editar_comentario'),
+    path('me-gusta/', views.me_gustaView, name = 'me-gusta'),
 ]
