@@ -1,6 +1,6 @@
 
 from django.urls import reverse, reverse_lazy
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from .models import Publicacion, Categoria, Comentario
 from .forms import PublicacionForm, ComentarioForm
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
@@ -68,7 +68,21 @@ class detalle_publicacion(FormView):
 
     def form_invalid(self, form):
         return super().form_invalid(form)
-    
+
+def me_gustaView(request):
+    if request.method == 'POST':
+        articulo_id = request.POST.get('articulo_id')
+        articulo = get_object_or_404(Publicacion, id = articulo_id)
+        usuario = request.user
+
+        if articulo.megusta.filter(id=usuario.id).exists():
+            articulo.megusta.remove(usuario)
+        else:
+            articulo.megusta.add(usuario)
+
+    return redirect(reverse('articulos:detalle_publicacion', kwargs={'pk':articulo_id}))
+
+
 class BorrarComentario(Super_autor_mixin, LoginRequiredMixin,DeleteView):
     model=Comentario
     template_name= 'articulos/borrar-comentario.html'
