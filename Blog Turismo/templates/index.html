@@ -6,7 +6,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Signika&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="/static/css/style_index_n.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/style_index_.css">
   <link rel="stylesheet" type="text/css" href="/static/css/style_index_card.css">
   <style>
       .card-img-top {
@@ -19,7 +19,7 @@
   <header>
     <div class="video-container">
       <video onloadedmetadata="this.muted=true" autoplay loop>
-        <source src="static/video/fondo.mp4">
+        <source src="{% static 'video/fondo.mp4' %}">
       </video>
       <div class="text-overlay">
         <h1 class="h1_imagen">Chaco</h1>
@@ -27,7 +27,7 @@
         <h2>-Explora las tierras</h2>
         <h2>-Disfruta la diversidad</h2>
     <div class="img-overlay">
-      <img src="static/imagen/imgc.png" alt="">
+      <img src="{% static 'imagen/imgc.png' %}" alt="">
     </div>
     </div>
   </header>
