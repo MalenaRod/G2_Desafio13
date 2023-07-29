@@ -146,8 +146,10 @@ h2{
             {% csrf_token %}
             <div class="card-footer py-3 border-0" style="background-color: #ffffff;">
               <div class="d-flex flex-start w-120">
+                {% if user.imagen %}
                 <img class="u-comm rounded-circle" src="{{user.imagen.url}}"
                   alt="avatar"/>
+                  {% endif %}
                 <div class="form-outline w-100">
                   <textarea class="form-control" id="{{ form.texto.id_for_label }}" name="{{ form.texto.name }}" rows="4"
                     style="background: #fff;"></textarea>
@@ -173,7 +175,8 @@ h2{
             <div class="d-flex flex-start">
               <div class="d-flex flex-start">
                 <img class="rounded-circle shadow-1-strong me-3"
-                  src="{{ user.imagen.url }}" alt="avatar" width="110" height="110"/>
+                {% if user.imagen %}
+                  src="{{ user.imagen.url }}" alt="avatar" width="110" height="110"/>{% endif %}
                   <div>
                     <h6 class="fw-bold mb-1">{{comentario.autor.first_name}} {{comentario.autor.last_name}}</h6>
                     <div class="d-flex align-items-center mb-3">
