@@ -1,19 +1,28 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    margin: 0;
-    background-image: url("/static/imagen/bg_pag/bg_sbr.jpg");
+    margin: auto;
+    display: flex;
+    flex-flow: flex wrap;
+    justify-content: center;
+    background-image: url("/static/imagen/bg_pag/algodon.jpg");
     background-size: cover;
-    background-position: center;
-    background-color: #f9f9f9;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+.presentacion {
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .container_1 {
-    width: 1800px;
+    width: 100%;
     margin: auto;
     background-color: rgba(255, 255, 255, 0.8);
     padding: auto;
-    border-radius: 10px;
 }
 
 h1 {
@@ -58,3 +67,4 @@ h2 {
 .description {
     font-size: 16px;
 }
+
