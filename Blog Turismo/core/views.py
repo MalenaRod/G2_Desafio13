@@ -12,6 +12,11 @@ class lista_publicacioness(ListView):
     context_object_name = 'articulos'
     paginate_by = 3
 
+def termViews(request):
+    return render(request, 'termino_condiciones.html', {})
+def politViews(request):
+    return render(request, 'politica_privacidad.html', {})
+
 def indexView(request):
     lista_publicaciones = Publicacion.objects.order_by('-fecha_publicacion')[:3]
     context = {

@@ -5,6 +5,8 @@ from django.urls import path, include
 urlpatterns = [
 	path('', views.indexView, name = 'index'),
     path('usuario/', include('Usuarios_app.urls'), name = 'usuario'),
+    path('terminos_condiciones/', views.termViews, name = 'Terminos_Condiciones'),
+    path('politica_ptivacidad/', views.politViews, name = 'politica_privacidad'),
     path('articulos/', include('Articulos_app.urls')),
     path('contacto/', views.ContactoCreateView.as_view(), name='contacto'),
     path('cacerca_de/', views.vistaAcerca, name='acerca'),
