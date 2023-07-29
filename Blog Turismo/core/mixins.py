@@ -6,7 +6,7 @@ class Super_autor_mixin(UserPassesTestMixin):
         obj = self.get_object()
 
         if hasattr(obj, 'autor'):
-            return usuario == obj.contenido.autor or usuario.is_superuser or usuario == obj.autor
+            return usuario == obj.autor or usuario == obj.contenido.autor or usuario.is_superuser 
 
 
 class Colab_Mixin(UserPassesTestMixin):
