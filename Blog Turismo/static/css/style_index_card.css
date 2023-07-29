@@ -26,3 +26,7 @@
   .card-n{
     position: center;
   }
+  .card-img-top {
+    height: 200px; /* Altura fija para las imágenes */
+    object-fit: cover; /* Ajustar imagen manteniendo la relación de aspecto */
+  }

@@ -8,6 +8,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Signika&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/static/css/style_index_n.css">
   <link rel="stylesheet" type="text/css" href="/static/css/style_index_card.css">
+  <style>
+      .card-img-top {
+    height: 200px; /* Altura fija para las imágenes */
+    object-fit: cover; /* Ajustar imagen manteniendo la relación de aspecto */
+  }
+  </style>
 </head>
 <body>
   <header>
@@ -26,38 +32,34 @@
     </div>
   </header>
 
-<div class="card-n">
+  <div class="card-n">
     <section>
-      <h1>TE PUEDE INTERESAR</h1>   
-    <div class="container mx-auto mt-4">
-       <div class="card-group">
-      <div class="card">
-        <img src="/static/imagen/art.jpeg" class="card-img-top"  alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Articulos</h5>
-          <p class="card-text">Noticias, Lugares, Comida y mucho mas en nuestra seccion de articulos</p>
-          <a href="{% url 'articulos:lista_publicaciones' %}" class="btn "><i class="fab fa-github"></i> Vamos</a>
-        </div>
+      <h1>Ultimos Articulos</h1>   
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for articulo in articulos %}
+          <div class="col-4"> 
+            <div class="card h-100">
+              {% if articulo.imagen %}
+              <img src="{{ articulo.imagen.url }}" class="card-img-top" alt="..." />
+              {% endif %}
+              <div class="card-body">
+                <h5 class="card-title">{{ articulo.titulo }}</h5>
+                <p class="card-text">{{ articulo.contenido|truncatewords_html:20 }}</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-body-secondary d-flex justify-content-between align-items-center">
+                  <p class="card-text">{{ articulo.categoria }}</p>
+                  <p class="card-text">{{ articulo.autor }}</p>
+                  <span>{{ articulo.fecha_publicacion }}</span>
+                  <a href="{% url 'articulos:detalle_publicacion' articulo.id %}" class="btn "><i class="fab fa-github"></i> Leer mas...</a>
+                </small>
+    
+              </div>
+            </div>
+          </div>
+        {% endfor %}
       </div>
-      <div class="card">
-        <img src="/static/imagen/sbr.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Sobre Nosotros</h5>
-          <p class="card-text">Descubre quienes somos y nuestro equipo de desarollo</p>
-          <a href="{% url 'acerca' %}" class="btn "><i class="fab fa-github"></i> Vamos</a>
-        </div>
-      </div>
-      <div class="card">
-        <img src="/static/imagen/cnt.jpeg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Contactanos</h5>
-          <p class="card-text">¿Tienes algun inconveniente?, contáctanos y háznoslo saber</p>
-          <a href="{% url 'contacto' %}" class="btn "><i class="fab fa-github"></i> Vamos</a>
-        </div>
-      </div>
-    </div>
     </section>
-
   <section id="cta">
     <h2>Unete a nosotros</h2>
     <p></p>
