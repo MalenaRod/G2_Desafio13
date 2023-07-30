@@ -27,36 +27,13 @@ img {
 
 .options-container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   margin-top: 20px;
+  margin-left: 68%;
+  padding-inline-end: 5em;
+  
 }
 
-
-.btn-editar {
-  background-color: #007bff; 
-  color: #fff;
-  padding: 8px 16px;
-  text-decoration: none;
-  border-radius: 5px;
-  margin-right: 10px;
-}
-
-.btn-editar:hover {
-  background-color: #0056b3; 
-}
-
-
-.btn-eliminar {
-  background-color: #dc3545; 
-  color: #fff;
-  padding: 8px 16px;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-.btn-eliminar:hover {
-  background-color: #b02a37; 
-}
 
 .page-container {
   max-width: auto;
@@ -84,7 +61,7 @@ img {
 body {
   margin: 0;
   padding: 0;
-  background-color: #b32a2a;
+  background-color: white;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -105,41 +82,52 @@ h2{
 
 }
 
+.cometarios{
+  justify-content: space-evenly;
+}
+
     </style>
   </head>
+
   <div class="page-container">
     <div class="post-container">
+      <div class="post-meta"><span class="date">{{ articulo.categoria }}</span> <span class="mx-1">&bullet;</span> <span>{{ articulo.fecha_publicacion }}</span></div>
       {% if articulo.imagen %}
       <img src="{{ articulo.imagen.url }}" alt="{{ articulo.titulo }}" class="post-image">
       {% endif %}
       <div class="post-content">
-        <p>Fecha de publicación: {{ articulo.fecha_publicacion }}</p>
         <h1>{{ articulo.titulo }}</h1>
         <p>{{ articulo.contenido }}</p>
         <div class="options-container">
           {% if user.is_superuser or user == articulo.autor %}
-          <a href="{% url 'articulos:editar_publicacion' articulo.id %}" class="btn-editar">Editar</a>
-          <a href="{% url 'articulos:eliminar_publicacion' articulo.id %}" class="btn-eliminar">Eliminar</a>
+
+          <a href="{% url 'articulos:editar_publicacion' articulo.id %}" 
+           role="button" type="submit" class="btn btn-outline-info">
+           <img src="{% static 'imagen/eraser.png' %}" alt="Editar"width=30px height=30px>Editar
+          </a>
+
+          <a href="{% url 'articulos:eliminar_publicacion' articulo.id %}" 
+           role="button" type="submit" class="btn btn-outline-info">
+           <img src="{% static 'imagen/bin.png' %}" alt="Borrar" width=30px height=30px>Eliminar
+          </a>
+          
           {% endif %}
   
           <form action="{% url 'articulos:me-gusta' %}" method="post" id="boton-me-gusta">
             {% csrf_token %}
             <input type="hidden" name="articulo_id" value="{{articulo.id}}">
             {% if user in articulo.megusta.all %}
-            <button type="submit" class="btn btn-outline-dark">
-              <img src="{% static 'imagen/filled_black_heart.png' %}" alt="Like" width=40px height=40px>
+            <button type="submit" class="btn btn-outline-info">
+              <img src="{% static 'imagen/filled_black_heart.png' %}" alt="me gusta"width=30px height=30px>
               Ya no me gusta</button>
             {% else %}
-            <button type="submit" class="btn btn-outline-dark">
-              <img src="{% static 'imagen/empty_black_heart.png' %}" alt="Like" width=40px height=40px>
+            <button type="submit" class="btn btn-outline-info">
+              <img src="{% static 'imagen/empty_black_heart.png' %}" alt="me gusta"width=30px height=30px>
               Me gusta!</button>
             {% endif %}
           </form>
-        </div></div></div>        
-        <h2>Comentarios Recientes</h2>
-
-
-        
+        </div></div></div>
+        <h2>Dejanos un comentario</h2>
 
         <div class="comentar-container">
           <form method="post" action="{% url 'articulos:detalle_publicacion' pk=articulo.id %}">
@@ -163,48 +151,46 @@ h2{
             </div>
           </form>
         </div>
-
-
+        <h5 class="comment-title py-4">Comentarios recientes</h5>
 
 {% for comentario in articulo.comentarios.all %}
-<div class="container my-5 py-5">
-  <div class="row d-flex justify-content-center">
-    <div class="col-md-12 col-lg-10">
-      <div class="card text-dark">
-          <div class="card-body p-4">
-            <div class="d-flex flex-start">
+
+  <div class="container my-5 py-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-12 col-lg-10">
+        <div class="card text-dark">
+            <div class="card-body p-2">
               <div class="d-flex flex-start">
-                <img class="rounded-circle shadow-1-strong me-3"
-                {% if user.imagen %}
-                  src="{{ user.imagen.url }}" alt="avatar" width="110" height="110"/>{% endif %}
-                  <div>
-                    <h6 class="fw-bold mb-1">{{comentario.autor.first_name}} {{comentario.autor.last_name}}</h6>
-                    <div class="d-flex align-items-center mb-3">
-                    <p class="mb-0">
-                      {{comentario.fecha}}
-                    </p>
-                    <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2"></i></a>
-                    <a href="#!" class="link-muted"><i class="fas fa-redo-alt ms-2"></i></a>
-                    <a href="#!" class="link-muted"><i class="fas fa-heart ms-2"></i></a>
-                  </div>
-                  <p class="mb-0">{{comentario.texto}}</p>
-                  {% if user.is_superuser or user == comentario.contenido.autor %}
-                  <a href="{% url 'articulos:borrar-comentario' comentario.id %}">Eliminar</a>
-                  {% if user == comentario.autor %}
-                  <a href="{% url 'articulos:editar_comentario' comentario.id %}">Editar</a>
-                  {% endif %}
-                  {% elif user == comentario.autor %}
-                  <a href="{% url 'articulos:borrar-comentario' comentario.id %}">Eliminar</a>
-                  <a href="{% url 'articulos:editar_comentario' comentario.id %}">Editar</a>
-                  {% endif %}
+                  <img class="rounded-circle shadow-1-strong me-3"
+                  {% if user.imagen %}
+                    src="{{ user.imagen.url }}" alt="avatar" width="110" height="110"/>{% endif %}
+                    <div>
+                      <h6 class="fw-bold mb-1">{{comentario.autor.first_name}} {{comentario.autor.last_name}}</h6>
+                      <div class="d-flex align-items-center mb-3">
+                      <p class="mb-0">
+                        {{comentario.fecha}}
+                      </p>
+                      </div>
+                    </div>
+                    <p class="mb-2">{{comentario.texto}}</p>
+                    <div>
+                    {% if user.is_superuser or user == comentario.contenido.autor %}
+                    <a href="{% url 'articulos:borrar-comentario' comentario.id %}">Eliminar</a>
+                    {% if user == comentario.autor %}
+                    <a href="{% url 'articulos:editar_comentario' comentario.id %}">Editar</a>
+                    {% endif %}
+                    {% elif user == comentario.autor %}
+                    <a href="{% url 'articulos:borrar-comentario' comentario.id %}">Eliminar</a>
+                    <a href="{% url 'articulos:editar_comentario' comentario.id %}">Editar</a>
+                    {% endif %}
+                    </div>
                 </div>
-                </div>
-                {% endfor %}
+              </div>
             </div>
           </div>
-        </div>
+        </div>     
       </div>
+      {% endfor %}
     </div>
   </div>
-</div></div>
-  {% endblock contenido %}
+{% endblock contenido %}
