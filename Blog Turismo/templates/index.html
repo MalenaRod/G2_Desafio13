@@ -50,7 +50,7 @@
                 <small class="text-body-secondary d-flex justify-content-between align-items-center">
                   <p class="card-text">{{ articulo.categoria }}</p>
                   <p class="card-text">{{ articulo.autor }}</p>
-                  <span>{{ articulo.fecha_publicacion | date:"d-m-Y h:m }}</span>
+                  <span>{{ articulo.fecha_publicacion | date:"d-m-Y h:m" }}</span>
                   <a href="{% url 'articulos:detalle_publicacion' articulo.id %}" class="btn "><i class="fab fa-github"></i> Leer mas...</a>
                 </small>
     
