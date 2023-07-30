@@ -85,6 +85,10 @@ h2{
 .cometarios{
   justify-content: space-evenly;
 }
+.comment-title{
+  margin-left: 23%;
+  margin-top: 2%;
+}
 
     </style>
   </head>
@@ -151,11 +155,11 @@ h2{
             </div>
           </form>
         </div>
-        <h5 class="comment-title py-4">Comentarios recientes</h5>
+        <h5 class="comment-title py-4 ">Comentarios recientes</h5>
 
 {% for comentario in articulo.comentarios.all %}
 
-  <div class="container my-5 py-5">
+  <div class="container py-3">
     <div class="row d-flex justify-content-center">
       <div class="col-md-12 col-lg-10">
         <div class="card text-dark">
