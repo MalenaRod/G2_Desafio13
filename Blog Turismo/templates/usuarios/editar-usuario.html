@@ -4,20 +4,11 @@
 {% block contenido %}
 <head>
     <link rel="stylesheet" type="text/css" href="/static/css/style_user_edit.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/style_register.css">
-    <style>
-        footer{
-  margin-top: auto;
-  text-align: center;
-  background-color: #333;
-  color: #fff;
-  padding: auto;
-}
-    </style>
+    <link rel="stylesheet" type="text/css" href="/static/css/style_register_n.css">
 </head>
 
 <div class="background-image">
-    <div class="container">
+    <div class="container-1">
         <h1>Hola {{usuario.first_name}}</h1> <!-- Encabezado h1 -->
         <div class="person">
             {% if user.imagen %}
@@ -51,6 +42,8 @@
     <button type="submit" class="btn btn-warning">Actualizar</button>
     </div>
 </form>
+</div>
+</div>
 {% endblock contenido %}
 
 

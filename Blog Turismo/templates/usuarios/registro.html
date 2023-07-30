@@ -3,12 +3,11 @@
 
 {% block contenido %}
     <head>
-        <link rel="stylesheet" type="text/css" href="/static/css/style_register.css">
-        
+        <link rel="stylesheet" type="text/css" href="/static/css/style_register_n.css">
     </head>
 
     <div class="background-image">
-        <div class="container">
+        <div class="container-1">
             <h1>Registro</h1>
             <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
@@ -42,6 +41,8 @@
         </div>
         <button type="submit" class="btn btn-warning">Crear Cuenta</button>
     </form>
-    
+   </div>
+</div>
+</div> 
 {% endblock contenido %}
     

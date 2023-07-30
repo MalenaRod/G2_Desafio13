@@ -61,3 +61,37 @@ object-fit: cover;
 flex: 0 0 30%; 
 max-width: 30%; 
 }
+.card-img-top {
+  height: 300px; 
+  object-fit: cover; 
+}
+
+.form-container {
+  display: flex;
+  align-items: center;
+  max-width: 90%;
+  margin-left: 5%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.form-container p {
+  margin-right: 1rem;
+  white-space: nowrap;
+}
+
+.form-container select {
+  flex-grow: 1;
+  max-width: 50%;
+  margin-right: 1rem;
+}
+
+.form-container button {
+  max-width: 30%;
+}
+.paginador{
+  margin-left: 44%;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  display: flex;
+}

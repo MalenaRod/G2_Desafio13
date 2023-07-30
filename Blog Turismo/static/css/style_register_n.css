@@ -1,3 +1,8 @@
+form label {
+  display: block; 
+  font-weight: bold; 
+  margin-bottom: 5px; 
+}
 
 form {
   max-width: 1000px; 
@@ -8,14 +13,6 @@ form {
   font-family: Arial, sans-serif; 
   margin-top: 0px;
 }
-
-
-form label {
-  display: block; 
-  font-weight: bold; 
-  margin-bottom: 5px; 
-}
-
 
 form input[type="text"],
 form input[type="email"],
@@ -42,15 +39,6 @@ form button:hover {
   background-color: #555; 
 }
 
-footer {
-  text-align: center;
-  background-color: #333; 
-  padding: 10px;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  left: 0; 
-}
 
 h1 {
   text-align: center;
@@ -66,10 +54,11 @@ h1 {
   justify-content: center;
   align-items: center;
 }
-.container {
+.container-1 {
   background-color: rgba(255, 255, 255, 0.8);
   z-index: 1; 
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
+  width: 70%;
 }
