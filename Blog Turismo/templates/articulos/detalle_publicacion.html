@@ -26,6 +26,10 @@ p {
   color: #333;  
 }
 
+h2{
+  text-align: center;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -78,9 +82,7 @@ body {
   display: block;
   margin-left: 20%;
 }
-h2{
-  text-align: center;
-}
+
 .u-comm{
   max-width: 120px;
   max-height: 120px;
@@ -88,13 +90,6 @@ h2{
 
 }
 
-.cometarios{
-  justify-content: space-evenly;
-}
-.comment-title{
-  margin-left: 23%;
-  margin-top: 2%;
-}
 
     </style>
   </head>
@@ -156,7 +151,6 @@ h2{
                 <div class="form-outline w-100">
                   <textarea class="form-control" id="{{ form.texto.id_for_label }}" name="{{ form.texto.name }}" rows="4"
                     style="background: #fff;"></textarea>
-                  <label class="form-label" for="{{ form.texto.id_for_label }}">Comentario:</label>
                 </div>
               </div>
               <div class="float-end mt-2 pt-1">
@@ -165,8 +159,10 @@ h2{
               </div>
             </div>
           </form>
+
         </div>
-        <h5 class="comment-title py-4 ">Comentarios recientes</h5>
+
+        <h4>Comentarios recientes:</h4>
 
 {% for comentario in articulo.comentarios.all %}
 
@@ -203,9 +199,9 @@ h2{
               </div>
             </div>
           </div>
-        </div>     
+        </div> 
+        {% endfor %}    
       </div>
-      {% endfor %}
     </div>
   </div>
 {% endblock contenido %}
