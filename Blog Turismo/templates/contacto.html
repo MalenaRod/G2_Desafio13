@@ -4,17 +4,22 @@
 
 {% block contenido %}
 
+
 <head> 
     <link rel="stylesheet" type="text/css" href="/static/css/style_contacto.css">
 </head>
 
-<h2>¿Quieres enviarnos una consulta?</h2>
-<h2>Completa el formulario y dejanos tu mensaje:</h2>
-<form method="post">
+<div class="">
+  <div class="title">
+    <h1>¿Tienes una consulta?</h1>
+    <h2>Completa el formulario y nos pondremos en contacto:</h2>
+  </div>
+
+  <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit">Enviar mensaje</button>
-</form>
-
+  </form>
+</div>
 {% endblock contenido %}
     
