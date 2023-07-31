@@ -21,7 +21,7 @@
         </div>
       <div class="post-content">
         <p>{{ articulo.contenido }}</p>
-        <div class="options-container">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
           {% if user.is_superuser or user == articulo.autor %}
 
           <a href="{% url 'articulos:editar_publicacion' articulo.id %}" 
@@ -35,7 +35,7 @@
           </a>
           
           {% endif %}
-  
+          
           <form action="{% url 'articulos:me-gusta' %}" method="post" id="boton-me-gusta">
             {% csrf_token %}
             <input type="hidden" name="articulo_id" value="{{articulo.id}}">
@@ -96,16 +96,20 @@
                       </p>
                       </div>
                     </div>
-                    <p class="mb-2">{{comentario.texto}}</p>
-                    <div>
+                    <p class="mb-2" class="fs-6" class="fst-italic">{{comentario.texto}}</p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     {% if user.is_superuser or user == comentario.contenido.autor %}
-                    <a href="{% url 'articulos:borrar-comentario' comentario.id %}">Eliminar</a>
+                    <a href="{% url 'articulos:borrar-comentario' comentario.id %}" 
+                    role="button" type="submit" class="btn btn-danger btn-sm">Eliminar</a>
                     {% if user == comentario.autor %}
-                    <a href="{% url 'articulos:editar_comentario' comentario.id %}">Editar</a>
+                    <a href="{% url 'articulos:editar_comentario' comentario.id %}" 
+                    role="button" type="submit" class="btn btn-primary btn-sm">Editar</a>
                     {% endif %}
                     {% elif user == comentario.autor %}
-                    <a href="{% url 'articulos:borrar-comentario' comentario.id %}">Eliminar</a>
-                    <a href="{% url 'articulos:editar_comentario' comentario.id %}">Editar</a>
+                    <a href="{% url 'articulos:borrar-comentario' comentario.id %}" 
+                    role="button" type="submit" class="btn btn-danger btn-sm">Eliminar</a>
+                    <a href="{% url 'articulos:editar_comentario' comentario.id %}" 
+                    role="button" type="submit" class="btn btn-primary btn-sm">Editar</a>
                     {% endif %}
                     </div>
                 </div>
