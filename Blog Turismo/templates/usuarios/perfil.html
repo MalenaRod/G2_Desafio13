@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block contenido %}
+
+<section style="background-color: #eee;">
+    
+  
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card mb-4">
+            <div class="card-body text-center">
+                {% if user.imagen %}
+                    <img src="{{usuario.imagen.url}}" alt="Imagen de perfil" 
+                    class="rounded-circle img-fluid" style="width: 150px;">
+                {% else %}
+                    <img src="{% static 'imagen/log_iconn.png' %}" alt="Imagen de perfil" 
+                    class="rounded-circle img-fluid" style="width: 150px;">
+                {% endif %}  
+                <h5 class="my-3">{{usuario.first_name}} {{usuario.last_name}}</h5>
+                {% if user.sobre_mi %}
+                <p class="text-muted mb-1">{{usuario.sobre_mi}}</p>
+                {% else %}
+                <p class="text-muted mb-4">Descripcion de usuario, si queres agregarla podes editar perfil.</p>
+                {% endif %}
+                <div class="d-flex justify-content-center mb-2">
+                    {% if user.id ==  object.id %}
+                        <a href="{% url 'usuarios:editar_usuario' user.id %}" 
+                        role="button" type="submit" class="btn btn-primary">Editar</a>
+                    {% endif %}
+                    {% if user.is_superuser or user.es_colaborador %}
+                        <a href="{% url 'mensajes_contacto' %}" class="btn btn-outline-primary ms-1">Ver contactos</a>
+                    {% endif %}
+                </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+            <div class="card mb-4">
+                <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                    <p class="mb-0">Nombre</p>
+                    </div>
+                    <div class="col-sm-9">
+                    <p class="text-muted mb-0">{{usuario.first_name}}</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                    <p class="mb-0">Email</p>
+                    </div>
+                    <div class="col-sm-9">
+                    <p class="text-muted mb-0">{{usuario.last_name}}</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                    <p class="mb-0">Email</p>
+                    </div>
+                    <div class="col-sm-9">
+                    <p class="text-muted mb-0">{{usuario.email}}</p>
+                    </div>
+                    </div>
+                </div>  
+
+                    
+                        <ol class="list-group list-group-numbered">
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                {% if user.is_superuser or user.es_colaborador %}
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Contactos atendidos</div>
+                            </div>
+                            {% if request.user.mensajes_contacto_atendidos > 0 %}
+                            <span class="badge bg-primary rounded-pill">{{ request.user.mensajes_contacto_atendidos }}</span>
+                            </li>
+                            {% endif %}
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Articulos creados</div>
+                            </div>
+                            {% if request.user.articulos_creados > 0 %}
+                            <span class="badge bg-primary rounded-pill">{{ request.user.articulos_creados }}</span>
+                            </li>
+                            {% endif %}
+                            {% endif %}
+                            
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Articulos gustados</div>
+                            </div>
+                            {% if request.user.articulos_gustados > 0 %}
+                            <span class="badge bg-primary rounded-pill">{{ request.user.articulos_gustados }}</span>
+                            </li>
+                            {% endif %}
+                        </ol>
+
+
+
+                    
+    </section>
+
+
+    {% endblock contenido %}

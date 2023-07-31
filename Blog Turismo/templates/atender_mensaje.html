@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+
+
+    <h1>Atender Mensaje de Contacto</h1>
+
+    <p><strong>Nombre:</strong> {{ mensaje.nombre }}</p>
+    <p><strong>Correo:</strong> {{ mensaje.correo }}</p>
+    <p><strong>País:</strong> {{ mensaje.pais }}</p>
+    <p><strong>Edad:</strong> {{ mensaje.edad }}</p>
+    <p><strong>Mensaje:</strong> {{ mensaje.mensaje }}</p>
+    
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="atendido_por" value="{{ request.user.id }}">
+        <button type="submit">Mensaje Revisado</button>
+    </form>
+    
+
+{% endblock contenido %}

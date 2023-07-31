@@ -1,16 +1,13 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic import CreateView, ListView, UpdateView
 from .models import MensajeContacto
 from .forms import ContactoForm
-from django.views.generic import ListView
-# Create your views here.
+from django.urls import reverse_lazy
+from .mixins import *
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.exceptions import PermissionDenied
 from Articulos_app.models import Publicacion
 
-class lista_publicacioness(ListView):
-    model = Publicacion
-    template_name = 'index.html'
-    context_object_name = 'articulos'
-    paginate_by = 3
 
 def termViews(request):
     return render(request, 'termino_condiciones.html', {})
@@ -30,9 +27,6 @@ def vistaAcerca(request):
 
 
 # contacto/views.py
-from django.views.generic.edit import CreateView
-from django.urls import reverse_lazy
-from .forms import ContactoForm
 
 class ContactoCreateView(CreateView):
     template_name = 'contacto.html'
@@ -41,3 +35,34 @@ class ContactoCreateView(CreateView):
 
 def contacto_exitoso(request):
     return render(request, 'contacto_exitoso.html', {})
+
+class VerContactos(LoginRequiredMixin, Colab_Mixin, ListView):
+    model = MensajeContacto
+    template_name = 'mensajes_contacto.html'
+    context_object_name = 'mensajes'
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_superuser and request.user.es_colaborador == 0:
+            raise PermissionDenied
+        return super().dispatch(request, *args, **kwargs)
+
+class AtenderContacto(LoginRequiredMixin, Colab_Mixin, UpdateView):
+    model = MensajeContacto
+    template_name = 'atender_mensaje.html'
+    fields = ['visto', 'atendido_por']
+    success_url = reverse_lazy('mensajes_contacto')
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_superuser and request.user.es_colaborador == 0:
+            raise PermissionDenied
+        return super().dispatch(request, *args, **kwargs)
+    
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        return self.render_to_response(self.get_context_data(mensaje=self.object))
+    
+    def form_valid(self, form):
+        form.instance.visto = True
+        form.instance.atendido_por = self.request.user
+        return super().form_valid(form)
+    

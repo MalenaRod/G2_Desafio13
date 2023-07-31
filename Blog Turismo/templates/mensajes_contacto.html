@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+
+
+    <h1>Mensajes de Contacto</h1>
+
+    
+    <table>
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>País</th>
+            <th>Edad</th>
+            <th>Mensaje</th>
+            <th>Fecha de Envío</th>
+            <th>Visto</th>
+            <th>Atendido por</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for mensaje in mensajes %}
+            
+            {% if mensaje.visto == False %}
+                
+            <tr>
+            <td>{{ mensaje.nombre }}</td>
+            <td>{{ mensaje.correo }}</td>
+            <td>{{ mensaje.pais }}</td>
+            <td>{{ mensaje.edad }}</td>
+            <td>{{ mensaje.mensaje }}</td>
+            <td>{{ mensaje.fecha_envio }}</td>
+            <td>{% if mensaje.visto %}
+                Sí
+                {% else %}
+                No
+                {% endif %}</td>
+            <td>{{ mensaje.atendido_por }}</td>
+            <td><a href="{% url 'atender_mensaje' mensaje.id %}">Revisar</a></td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock contenido %}

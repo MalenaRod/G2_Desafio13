@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, DetailView
 from .models import Usuario
 from .forms import RegistrarseForm
 from django.urls import reverse
@@ -31,10 +31,13 @@ class RegistroView(CreateView):
         return respuesta
 
 
-
 class EditarUsuarioView(UpdateView):
     model = Usuario
     template_name = 'usuarios/editar-usuario.html'
     form_class = EditarUsuarioForm
     success_url = reverse_lazy('index')  # Redirige a la pagina de Inicio cuando la edición sea exitosa
+
+class PerfilUsuarioView(DetailView):
+    model = Usuario 
+    template_name = 'usuarios/perfil.html'
 

@@ -36,6 +36,13 @@
             {{ form.email }}
         </div>
         <div class="form-group">
+            <label for="{{ form.sobre_mi.id_for_label }}">Sobre vos</label>
+            {{ form.sobre_mi }}
+        </div>
+        <small id="passwordHelpBlock" class="form-text text-muted">
+            Contanos que te gusta...
+        </small>
+        <div class="form-group">
             <label for="{{ form.imagen.id_for_label }}">Cargar imagen</label>
             {{ form.imagen }}
         </div>
