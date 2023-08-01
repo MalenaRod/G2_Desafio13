@@ -32,9 +32,12 @@ AUTH_USER_MODEL = 'Usuarios_app.Usuario'
 SECRET_KEY = 'django-insecure-92&uba1ta-$7pnursh14r8)*ohua-+je2i@dj53p689q43!h1v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+if not DEBUG:
+    STATIC_FILES = os.path.join(BASE_DIR,'staticfiles')
+
+ALLOWED_HOSTS = ['malrodriguez.pythonanywhere.com']
 
 
 # Application definition
