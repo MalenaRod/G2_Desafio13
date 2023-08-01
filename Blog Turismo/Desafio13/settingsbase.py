@@ -35,7 +35,7 @@ SECRET_KEY = 'django-insecure-92&uba1ta-$7pnursh14r8)*ohua-+je2i@dj53p689q43!h1v
 DEBUG = False
 
 if not DEBUG:
-    STATIC_FILES = os.path.join(BASE_DIR,'staticfiles')
+    STATIC_FILES = os.path.join(BASE_DIR,'static')
 
 ALLOWED_HOSTS = ['malrodriguez.pythonanywhere.com']
 
