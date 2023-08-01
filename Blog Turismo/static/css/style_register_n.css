@@ -24,7 +24,6 @@ form input[type="password"] {
   margin-bottom: 10px; 
 }
 
-
 form button {
   padding: 10px 20px; 
   background-color: #888; 
@@ -49,7 +48,7 @@ h1 {
   background-image: url('/static/imagen/bg_pag/bg_r.jpg'); 
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;

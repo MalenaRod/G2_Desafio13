@@ -4,12 +4,79 @@
   }
   
   .person img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
   }
+  
 h4{
   text-align: center;
   margin: 20px;
+}
+
+form label {
+  display: block; 
+  font-weight: bold; 
+  margin-bottom: 5px; 
+}
+
+form {
+  max-width: 1000px; 
+  margin: 0 auto;
+  padding: 20px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  font-family: Arial, sans-serif; 
+  margin-top: 0px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="sobre_mi"] {
+  width: 100%; 
+  padding: 8px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  margin-bottom: 10px; 
+}
+
+
+form button {
+  padding: 10px 20px; 
+  background-color: #888; 
+  color: #fff; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
+}
+
+
+form button:hover {
+  background-color: #555; 
+}
+
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.background-image {
+  position: relative;
+  background-image: url('/static/imagen/bg_pag/bg_r.jpg'); 
+  background-size: cover;
+  background-position: center;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container-1 {
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 1; 
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  width: 70%;
 }
