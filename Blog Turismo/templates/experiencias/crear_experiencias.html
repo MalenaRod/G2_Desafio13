@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block contenido %}
+
+
+<head> 
+    <link rel="stylesheet" type="text/css" href="/static/css/style_contacto.css">
+</head>
+
+<div>
+  <div class="title">
+    <h1>Contanos sobre tu experiencia</h1>
+  </div>
+
+  <form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Enviar experiencia</button>
+  </form>
+</div>
+{% endblock contenido %}

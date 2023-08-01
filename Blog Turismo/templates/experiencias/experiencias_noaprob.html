@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+
+
+    <h1>Aprobar o borrar experiencia pendientes</h1>
+
+{% for experiencia in experiencias %}
+            
+    {% if experiencia.aprobado == False %}
+        
+
+    <td>{{ experiencia.titulo }}</td>
+    <td>{{ experiencia.contenido }}</td>
+    <td>{{ experiencia.imagen }}</td>
+    <td>{{ experiencia.autor }}</td>
+
+
+    <td><a href="{% url 'experiencias:aprobar_experiencias' experiencia.id %}">Revisar</a></td>
+    {% endif %}
+
+{% endfor %}
+    
+
+{% endblock contenido %}

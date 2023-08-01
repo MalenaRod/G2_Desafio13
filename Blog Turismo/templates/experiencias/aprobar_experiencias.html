@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+
+<h1>Aprobar o borrar experiencias</h1>     
+    {% if experiencia.aprobado == False %}
+
+    <p><strong>Titulo:</strong> {{ experiencia.titulo }}</p>
+    <p><strong>Contenido:</strong> {{ experiencia.contenido }}</p>
+    <p><strong>Imagen:</strong></p> <img src="{{ experiencia.imagen }}" alt="imagen">
+    <p><strong>Autor:</strong> {{ experiencia.autor }}</p>
+    
+
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="aprobado_por" value="{{ request.user.id }}">
+        <button type="submit">Aprobar experiencia</button>
+    </form>
+
+{% endblock contenido %}
