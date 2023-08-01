@@ -13,7 +13,8 @@ class Usuario(AbstractUser):
         return self.mensajecontacto_set.filter(atendido_por=self).count()
     
     def articulos_creados(self):
-        return self.articulos_app_set.filter(autor=self).count()
+        return self.usuario_articulos.count()
     
     def articulos_gustados(self):
-        return self.articulos_app_publicacion_megusta_set.filter(usuario_id=self).count()
+        return self.articulos_megusta.count()
+    
