@@ -19,9 +19,9 @@ class ListaExperiencias(ListView):
 
 class AprobarExperiencia(LoginRequiredMixin, Colab_Mixin, UpdateView):
     model = Experiencias
-    template_name = 'aprobar_experiencias.html'
+    template_name = 'experiencias/aprobar_experiencias.html'
     fields = ['aprobado', 'aprobado_por']
-    success_url = reverse_lazy('experiencias:aprobar_experiencias')
+    success_url = reverse_lazy('experiencias:experiencias_Noaprobadas')
 
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_superuser and request.user.es_colaborador == 0:
@@ -53,20 +53,20 @@ def me_gustaView(request):
 
     
 
-class NuevaExperiencia(LoginRequiredMixin, Colab_Mixin, CreateView):
+class NuevaExperiencia(LoginRequiredMixin, CreateView):
     model = Experiencias
     template_name = 'experiencias/crear_experiencias.html'
     form_class = ExperienciasForm
+    success_url = reverse_lazy('experiencias:experiencia_creada') 
 
     def form_valid(self, form):
-        f = form.save(commit=False)
-        f.autor_id = self.request.user.id
-        return super().form_valid(f)
+        form.instance.autor = self.request.user
+        return super().form_valid(form)
 
 
 def experiencia_creada(request):
-    return render(request, 'experiencia_creada.html', {})
- 
+    return render(request, 'experiencias/experiencia_creada.html', {})
+
 
 class EliminarExperiencia(LoginRequiredMixin, Colab_Mixin, DeleteView):
     template_name = 'experiencias/eliminar_experiencia.html'

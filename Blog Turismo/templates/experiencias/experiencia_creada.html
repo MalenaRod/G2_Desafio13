@@ -1,17 +1,23 @@
+
+{% load static %}
+
+
 {% block contenido %}
-    
-<head> 
-    <link rel="stylesheet" type="text/css" href="/static/css/style_contactoexitoso.css">
-</head>
-    <title>Experiencia enviada/title>
-</head>
+
+    <head> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style_contactoexitoso.css' %}">
+    </head>
+
+    <head> 
+        <title>Formulario enviado</title>
+    </head>
+
 <body>
     <div class="container">
         <h1>¡Gracias por contactarnos!</h1>
-        <p>Te recordamos que antes de verla publicada tu experiencia 
-            debe ser aprobada por uno de nuestros colaboradores.
-        </p>
-        <p>No te preocupes, la podras ver muy pronto.</p>
+        <p>Tu experiencia sera revisada muy pronto por uno de nuestros colaboradores</p>
+        <p>Mientras, te invitamos a revisar nuestros articulos y las experiencias de otros usuarios 
+            ¡Recuerda darle me gusta a lo que te interese ;)!</p>
         <a href="{% url 'index' %}" class="button"><u>Volver al inicio</u></a>
         
     </div>
