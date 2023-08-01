@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+
+
+    <h1>Atender experiencia</h1>
+
+    <p><strong>Título:</strong> {{ experiencia.titulo }}</p>
+    <p><strong>Contenido:</strong> {{ experiencia.contenido }}</p>
+    <p><strong>Imagen:</strong> {{ experiencia.imagen }}</p>
+
+    
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="aprobado_por" value="{{ request.user.id }}">
+        <button type="submit">Aprobar experiencia</button>
+    </form>
+    
+
+{% endblock contenido %}
