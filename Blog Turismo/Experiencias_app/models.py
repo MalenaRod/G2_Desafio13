@@ -41,10 +41,3 @@ class Experiencias(models.Model):
         if self.imagen:
             self.imagen.delete()
         super().delete(*args, **kwargs)
-
-    
-  #  def cont_experiencias_aprobadas(self):
-  #      return self.mensajecontacto_set.filter(atendido_por=self).count()
-        
-   # def articulos_gustados(self):
-   #     return self.articulos_megusta.count()

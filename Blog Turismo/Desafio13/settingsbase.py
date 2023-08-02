@@ -38,7 +38,7 @@ if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
 
-ALLOWED_HOSTS = ['malrodriguez.pythonanywhere.com']
+ALLOWED_HOSTS = ['malrodriguez.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -129,7 +129,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 #STATICFILES_DIRS = [
-#   BASE_DIR / 'static',
+#  BASE_DIR / 'static',
 #]
 
 

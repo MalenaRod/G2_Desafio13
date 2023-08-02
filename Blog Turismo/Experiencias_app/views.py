@@ -15,7 +15,6 @@ class ListaExperiencias(ListView):
     model = Experiencias
     template_name = 'experiencias/experiencias.html'
     context_object_name = 'experiencias'
- 
 
 class AprobarExperiencia(LoginRequiredMixin, Colab_Mixin, UpdateView):
     model = Experiencias
@@ -71,14 +70,14 @@ def experiencia_creada(request):
 class EliminarExperiencia(LoginRequiredMixin, Colab_Mixin, DeleteView):
     template_name = 'experiencias/eliminar_experiencia.html'
     model = Experiencias
-    success_url = reverse_lazy('experiencias:aprobar_experiencias')
+    success_url = reverse_lazy('experiencias:experiencias_Noaprobadas')
 
     def test_func(self):
-        return self.request.user.is_superuser or self.request.user.es_colaborador == self.request.user
+        return self.request.user.is_superuser or self.request.user.es_colaborador
 
     def get_object(self, queryset=None):
         obj = super().get_object(queryset)
-        if not self.request.user.is_superuser and not self.request.user.es_colaborador == self.request.user:
+        if not self.request.user.is_superuser and not self.request.user.es_colaborador:
             raise Http404
         return obj
 

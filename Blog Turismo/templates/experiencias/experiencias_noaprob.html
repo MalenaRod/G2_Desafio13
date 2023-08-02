@@ -2,24 +2,37 @@
 
 {% block contenido %}
 
+<h1>Aprobar o borrar experiencia pendientes</h1>
 
-    <h1>Aprobar o borrar experiencia pendientes</h1>
 
-{% for experiencia in experiencias %}
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Fecha de Envío</th>
+                    <th scope="col">Accion</th>
+                </tr>
+                </thead>
+                {% for experiencia in experiencias %}
+                {% if experiencia.aprobado == False %}
+
+                <tbody>
+                <tr>
+                    <td>{{ experiencia.autor }}</td>
+                    <td>{{ experiencia.titulo }}</td>
+                    <td>{{ experiencia.fecha_publicacion | date:"d-m-Y h:m" }}</td>
+                    <td><a href="{% url 'experiencias:aprobar_experiencias' experiencia.id %}" class="btn btn-success">
+                        Ver en detalle</a></td>
+                </tr>
+                </tbody>
+            </table>
+
+            {% endif %}
             
-    {% if experiencia.aprobado == False %}
-        
 
-    <td>{{ experiencia.titulo }}</td>
-    <td>{{ experiencia.contenido }}</td>
-    <td>{{ experiencia.imagen }}</td>
-    <td>{{ experiencia.autor }}</td>
+    {% endfor %}
 
 
-    <td><a href="{% url 'experiencias:aprobar_experiencias' experiencia.id %}">Revisar</a></td>
-    {% endif %}
-
-{% endfor %}
-    
 
 {% endblock contenido %}

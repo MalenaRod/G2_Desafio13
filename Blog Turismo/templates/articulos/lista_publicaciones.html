@@ -10,7 +10,7 @@
       <select name="categoria" id="id_categoria" class="form-select">
         <option value="">Categoria</option>
         {% for categoria in categorias %}
-          <option value="{{ categoria.cat_nombre }}" {% if categoria.cat_nombre == categoria_seleccionada %}selected{% endif %}>
+          <option value="{{ categoria.cat_nombre }}"> {% if categoria.cat_nombre == categoria_seleccionada %}selected{% endif %}>
             {{categoria.cat_nombre}}
           </option>
         {% endfor %}
@@ -104,9 +104,6 @@
       
     </div>
   </div>
-
-  <!-- PAGINADOR -->
-
 
     
   

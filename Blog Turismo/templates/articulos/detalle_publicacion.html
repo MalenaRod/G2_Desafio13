@@ -4,7 +4,7 @@
 
 {% block contenido %}
   <head>
-    <link rel="stylesheet" href="{% static 'css/articulos_css/style_detalles_p_n.css' %}">
+    <link rel="stylesheet" href="/static/css/articulos_css/style_detalles_p_n.css">
   </head>
 
   <div class="page-container">
@@ -24,16 +24,16 @@
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
           {% if user.is_superuser or user == articulo.autor %}
 
-          <a href="{% url 'articulos:editar_publicacion' articulo.id %}" 
-           role="button" type="submit" class="btn btn-outline-info">
-           <img src="{% static 'imagen/eraser.png' %}" alt="Editar"width=30px height=30px>Editar
-          </a>
+            <a href="{% url 'articulos:editar_publicacion' articulo.id %}" 
+            role="button" type="submit" class="btn btn-outline-info">
+            <img src="{% static 'imagen/eraser.png' %}" alt="Editar"width=30px height=30px>Editar
+            </a>
 
-          <a href="{% url 'articulos:eliminar_publicacion' articulo.id %}" 
-           role="button" type="submit" class="btn btn-outline-info">
-           <img src="{% static 'imagen/bin.png' %}" alt="Borrar" width=30px height=30px>Eliminar
-          </a>
-          
+            <a href="{% url 'articulos:eliminar_publicacion' articulo.id %}" 
+            role="button" type="submit" class="btn btn-outline-info">
+            <img src="{% static 'imagen/bin.png' %}" alt="Borrar" width=30px height=30px>Eliminar
+            </a>
+            
           {% endif %}
           
           <form action="{% url 'articulos:me-gusta' %}" method="post" id="boton-me-gusta">
@@ -97,7 +97,7 @@
                       </div>
                     </div>
                     <p class="mb-2" class="fs-6" class="fst-italic">{{comentario.texto}}</p>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <div class="d-grid gap-2 flex justify-content-md-end">
                     {% if user.is_superuser or user == comentario.contenido.autor %}
                     <a href="{% url 'articulos:borrar-comentario' comentario.id %}" 
                     role="button" type="submit" class="btn btn-danger btn-sm">Eliminar</a>

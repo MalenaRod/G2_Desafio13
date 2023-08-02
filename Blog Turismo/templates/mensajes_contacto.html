@@ -5,42 +5,31 @@
 
     <h1>Mensajes de Contacto</h1>
 
-    
-    <table>
-        <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Correo</th>
-            <th>País</th>
-            <th>Edad</th>
-            <th>Mensaje</th>
-            <th>Fecha de Envío</th>
-            <th>Visto</th>
-            <th>Atendido por</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for mensaje in mensajes %}
+    {% for mensaje in mensajes %}
             
-            {% if mensaje.visto == False %}
-                
-            <tr>
-            <td>{{ mensaje.nombre }}</td>
-            <td>{{ mensaje.correo }}</td>
-            <td>{{ mensaje.pais }}</td>
-            <td>{{ mensaje.edad }}</td>
-            <td>{{ mensaje.mensaje }}</td>
-            <td>{{ mensaje.fecha_envio }}</td>
-            <td>{% if mensaje.visto %}
-                Sí
-                {% else %}
-                No
-                {% endif %}</td>
-            <td>{{ mensaje.atendido_por }}</td>
-            <td><a href="{% url 'atender_mensaje' mensaje.id %}">Revisar</a></td>
-            </tr>
-            {% endif %}
-        {% endfor %}
-        </tbody>
-    </table>
+    {% if mensaje.visto == False %}
+
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Correo</th>
+                        <th scope="col">Fecha de Envío</th>
+                        <th scope="col">Accion</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{ mensaje.nombre }}</td>
+                        <td>{{ mensaje.correo }}</td>
+                        <td>{{ mensaje.fecha_envio | date:"d-m-Y h:m" }}</td>
+                        <td><a href="{% url 'atender_mensaje' mensaje.id %}" class="btn btn-success">
+                            Revisar</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                {% endif %}
+                {% endfor %}
+
 {% endblock contenido %}

@@ -57,12 +57,16 @@
         {% endfor %}
       </div>
     </section>
+    
+  {% if not user.is_authenticated %}
+    
   <section id="cta">
     <h2>Unete a nosotros</h2>
     <p></p>
     <a href="{% url 'usuarios:registrarse' %}" class="cta-button">¡Registrate ahora!</a>
   </section>
 
+  {% endif %}
 </body>
 
 {% endblock contenido %}

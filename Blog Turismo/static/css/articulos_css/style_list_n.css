@@ -29,13 +29,13 @@ justify-content: center;
   justify-content: center;
 }
 .btn-nueva-publicacion:hover {
-  background-color: #555; 
+  background-color: #8595a8; 
 }  
 .btn-nueva-publicacion {
   display: flex;
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: #333; 
+  background-color: #2775db; 
   color: #fff;
   padding: 10px 20px;
   text-decoration: none;

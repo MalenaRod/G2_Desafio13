@@ -18,3 +18,9 @@ class Usuario(AbstractUser):
     def articulos_gustados(self):
         return self.articulos_megusta.count()
     
+    def cont_experiencias_aprobadas(self):
+        return self.experiencias_set.filter(aprobado_por=self).count()
+        
+    def experiencias_gustadas(self):
+        return self.experiencias_megusta.count()
+    

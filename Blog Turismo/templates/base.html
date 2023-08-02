@@ -13,6 +13,7 @@
 
     </style>
 </head>
+
 <body class="nnn">
       <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="ligth">
     <div class="container-fluid">
@@ -30,17 +31,17 @@
             <a class="nav-link" href="{% url 'articulos:lista_publicaciones' %}">Articulos</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="{% url 'experiencias:experiencias' %}">Experiencias</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="{% url 'acerca' %}">Sobre nosotros</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'contacto' %}">Contacto</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'experiencias:experiencias' %}">Experiencias</a>
-          </li>
         </ul>
         <ul class="navbar-nav">
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown float-right">
             {% if user.is_authenticated %}
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 {{user.first_name}}
